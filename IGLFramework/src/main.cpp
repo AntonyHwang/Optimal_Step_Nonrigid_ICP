@@ -7,6 +7,7 @@
 
 #include "igl/readOFF.h"
 #include "igl/viewer/Viewer.h"
+#include "mesh.h"
 
 #include <iostream>
 
@@ -66,6 +67,10 @@ void setViewerNormals(
 
 int main(int argc, char *argv[]) {
 
+    // Pointcloud vertices, N rows x 3 columns.
+    Eigen::MatrixXd V;
+    // Face indices, M x 3 integers referring to V.
+    Eigen::MatrixXi F;
     // How many neighbours to use for normal estimation, shown on GUI.
     int kNeighbours = 10;
     // Maximum distance between vertices to be considered neighbours (FLANN mode)
@@ -144,7 +149,7 @@ int main(int argc, char *argv[]) {
     viewer.callback_init =
         [
             &cloudManager, &kNeighbours, &maxNeighbourDist,
-            &floatVariable, &boolVariable, &dir
+            &floatVariable, &boolVariable, &dir, &V, &F
         ] (igl::viewer::Viewer& viewer)
     {
         // Add an additional menu window
@@ -433,9 +438,13 @@ int main(int argc, char *argv[]) {
         );
 
         // Add a button
-        viewer.ngui->addButton("Print Hello",[]() {
-            std::cout << "Hello\n";
+        viewer.ngui->addButton(
+                /* Displayed label: */ "Non-Rigid ICP",
+                /*  Lambda to call: */ [&](){
+            mesh msh;
+            Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
         });
+
 
         // Generate menu
         viewer.screen->performLayout();

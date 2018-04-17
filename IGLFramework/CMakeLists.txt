@@ -123,6 +123,8 @@ set(SOURCE_FILES
     src/decoratedCloud.cpp 
     src/cloudManager.cpp
     src/main.cpp
+	src/mesh.cpp
+	include/mesh.h
 )
 
 # Create program
