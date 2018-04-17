@@ -102,6 +102,8 @@ MatrixXd compute_D(MatrixXd V) {
 }
 
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
+    MatrixXd R, t;
+    double dist_err;
     int num_V = Temp_V.rows();
     int num_F = Temp_F.rows();
     int gamma = 1;
@@ -110,6 +112,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V
     MatrixXd M = V;
     MatrixXd D = compute_D(V);
     MatrixXd weights = MatrixXd::ones(num_V, 1);
-
+    tie(R, t, dist_err) = ICP(Target_V, Temp_V, step_size);
+    init_T = R.transpose() << endl << t.transpose();
+    X = init_T.replicate<num_V, 1>();
+    MatrixXd new_V = D * X;
 }
 
