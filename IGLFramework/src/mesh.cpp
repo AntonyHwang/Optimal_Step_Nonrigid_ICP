@@ -1,11 +1,24 @@
 #include "mesh.h"
-#include "igl/adjacency_matrix.h"
-#include "nanoflann.hpp"
+#include "acq/normalEstimation.h"
+#include <nanoflann.hpp>
 #include <random>
+#include <cmath>
+#include <igl/gaussian_curvature.h>
+#include <igl/doublearea.h>
+#include <exception>
+#include <list>
+#include <Eigen/Sparse>
+#include <SymEigsSolver.h>
+#include <GenEigsSolver.h>
+#include <MatOp/SparseGenMatProd.h>
+#include <Eigen/IterativeLinearSolvers>
+
 
 using namespace Eigen;
 using namespace std;
 using namespace nanoflann;
+using namespace acq;
+using namespace Spectra;
 
 
 tuple<MatrixXd, MatrixXd, double> nearest_neighbor(MatrixXd Pv, MatrixXd Qv, int sample) {
@@ -83,7 +96,7 @@ tuple<Matrix3d, Vector3d, double> mesh::ICP(MatrixXd Pv, MatrixXd Qv, int step_s
     return {R, t, dist};
 }
 
-MatrixXi Adjacency_Matrix(int num_V, Matrix F) {
+MatrixXi Adjacency_Matrix(int num_V, MatrixXd F) {
     MatrixXi adj_m(num_V, num_V);
     for (int i = 0; i < F.rows(); i++) {
         int v0 = F(i, 0);
@@ -93,12 +106,20 @@ MatrixXi Adjacency_Matrix(int num_V, Matrix F) {
 }
 
 MatrixXd compute_D(MatrixXd V) {
-    int num_V = V.rows();
-    MatrixXd D(num_V * 4, num_V);
-    for (int i = 0; i < num_V; i++) {
-        MatrixXd hom_v = V.row(i) << 1;
-        D.block<4,1>(i * 4, i) = hom_v.transpose();
+    int nVert = V.rows();
+    SparseMatrix<double> D(nVert, 4*nVert);
+    MatrixXd I(nVert, 1);
+    MatrixXd J = 4 * I;
+    MatrixXd tempV(4, 1);
+    for (int i = 0; i < nVert; i++) {
+        
     }
+//    int num_V = V.rows();
+//    MatrixXd D(num_V * 4, num_V);
+//    for (int i = 0; i < num_V; i++) {
+//        MatrixXd hom_v = V.row(i) << 1;
+//        D.block<4,1>(i * 4, i) = hom_v.transpose();
+//    }
 }
 
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
@@ -107,14 +128,14 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V
     int num_V = Temp_V.rows();
     int num_F = Temp_F.rows();
     int gamma = 1;
-    MatrixXd X = zeros(3, 4 * num_V).transpose();
-    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);
-    MatrixXd M = V;
-    MatrixXd D = compute_D(V);
-    MatrixXd weights = MatrixXd::ones(num_V, 1);
-    tie(R, t, dist_err) = ICP(Target_V, Temp_V, step_size);
-    init_T = R.transpose() << endl << t.transpose();
-    X = init_T.replicate<num_V, 1>();
-    MatrixXd new_V = D * X;
+//    MatrixXd X = zeros(3, 4 * num_V).transpose();
+//    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);
+//    MatrixXd M = V;
+//    MatrixXd D = compute_D(V);
+//    MatrixXd weights = MatrixXd::ones(num_V, 1);
+//    tie(R, t, dist_err) = ICP(Target_V, Temp_V, step_size);
+//    init_T = R.transpose() << endl << t.transpose();
+//    X = init_T.replicate<num_V, 1>();
+//    MatrixXd new_V = D * X;
 }
 

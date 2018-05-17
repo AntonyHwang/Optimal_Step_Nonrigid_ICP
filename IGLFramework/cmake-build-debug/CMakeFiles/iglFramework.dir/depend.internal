@@ -1020,18 +1020,53 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/IndexedViewMethods.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
- ../3rdparty/libigl/include/igl/adjacency_matrix.cpp
- ../3rdparty/libigl/include/igl/adjacency_matrix.h
+ ../3rdparty/libigl/include/igl/IndexComparison.h
+ ../3rdparty/libigl/include/igl/LinSpaced.h
+ ../3rdparty/libigl/include/igl/PI.h
+ ../3rdparty/libigl/include/igl/SortableRow.h
+ ../3rdparty/libigl/include/igl/colon.cpp
+ ../3rdparty/libigl/include/igl/colon.h
+ ../3rdparty/libigl/include/igl/doublearea.cpp
+ ../3rdparty/libigl/include/igl/doublearea.h
+ ../3rdparty/libigl/include/igl/edge_lengths.cpp
+ ../3rdparty/libigl/include/igl/edge_lengths.h
+ ../3rdparty/libigl/include/igl/gaussian_curvature.cpp
+ ../3rdparty/libigl/include/igl/gaussian_curvature.h
+ ../3rdparty/libigl/include/igl/get_seconds.cpp
+ ../3rdparty/libigl/include/igl/get_seconds.h
  ../3rdparty/libigl/include/igl/igl_inline.h
+ ../3rdparty/libigl/include/igl/internal_angles.cpp
+ ../3rdparty/libigl/include/igl/internal_angles.h
  ../3rdparty/libigl/include/igl/list_to_matrix.cpp
  ../3rdparty/libigl/include/igl/list_to_matrix.h
  ../3rdparty/libigl/include/igl/max_size.cpp
  ../3rdparty/libigl/include/igl/max_size.h
  ../3rdparty/libigl/include/igl/min_size.cpp
  ../3rdparty/libigl/include/igl/min_size.h
+ ../3rdparty/libigl/include/igl/parallel_for.h
  ../3rdparty/libigl/include/igl/readOFF.cpp
  ../3rdparty/libigl/include/igl/readOFF.h
- ../3rdparty/libigl/include/igl/verbose.h
+ ../3rdparty/libigl/include/igl/reorder.cpp
+ ../3rdparty/libigl/include/igl/reorder.h
+ ../3rdparty/libigl/include/igl/sort.cpp
+ ../3rdparty/libigl/include/igl/sort.h
+ ../3rdparty/libigl/include/igl/squared_edge_lengths.cpp
+ ../3rdparty/libigl/include/igl/squared_edge_lengths.h
+ ../include/GenEigsSolver.h
+ ../include/LinAlg/DoubleShiftQR.h
+ ../include/LinAlg/TridiagEigen.h
+ ../include/LinAlg/UpperHessenbergEigen.h
+ ../include/LinAlg/UpperHessenbergQR.h
+ ../include/MatOp/DenseGenMatProd.h
+ ../include/MatOp/DenseSymMatProd.h
+ ../include/MatOp/SparseGenMatProd.h
+ ../include/SymEigsSolver.h
+ ../include/Util/CompInfo.h
+ ../include/Util/SelectionRule.h
+ ../include/Util/SimpleRandom.h
+ ../include/Util/TypeTraits.h
+ ../include/acq/normalEstimation.h
+ ../include/acq/typedefs.h
  ../include/mesh.h
  ../include/nanoflann.hpp
  /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/mesh.cpp

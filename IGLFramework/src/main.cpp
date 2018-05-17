@@ -442,7 +442,7 @@ int main(int argc, char *argv[]) {
                 /* Displayed label: */ "Non-Rigid ICP",
                 /*  Lambda to call: */ [&](){
             mesh msh;
-            Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
+            //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
         });
 
 

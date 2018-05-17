@@ -1,14 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - found
--- Found Threads: TRUE  
 -- Using Cocoa for window creation
--- Performing Test HAS_CPP14_FLAG
--- Performing Test HAS_CPP14_FLAG - Success
--- Performing Test HAS_CPP11_FLAG
--- Performing Test HAS_CPP11_FLAG - Success
 -- NanoGUI: LTO support enabled.
 -- NanoGUI: using libc++ and libc++abi.
 -- NANOGUI_EXTRA_DEFS -DNANOGUI_SHARED;-DNVG_SHARED;-DGLAD_GLAPI_EXPORT
