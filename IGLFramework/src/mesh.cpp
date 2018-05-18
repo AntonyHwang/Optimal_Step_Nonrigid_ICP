@@ -14,6 +14,7 @@
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
 
+
 using namespace Eigen;
 using namespace std;
 using namespace nanoflann;
@@ -142,19 +143,52 @@ MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
 
 SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi F) {
 //    MatrixXi F(2,3);
-//    F(0,0) = 1;
-//    F(0,1) = 2;
-//    F(0,2) = 4;
-//    F(1,0) = 2;
-//    F(1,1) = 3;
-//    F(1,2) = 4;
+//    F(0,0) = 0;
+//    F(0,1) = 1;
+//    F(0,2) = 3;
+//    F(1,0) = 1;
+//    F(1,1) = 2;
+//    F(1,2) = 3;
     Eigen::SparseMatrix<double> A;
     igl::adjacency_matrix(F, A);
+    //cout<<A;
     return A;
 }
 
-MatrixXd Incidence_Matrix(MatrixXd A) {
+SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
 
+    int cols = A.cols();
+    assert(cols > 0);
+
+    int rows = A.rows();
+    assert(rows > 0);
+
+    assert(rows == cols);
+    std::vector<double> Vector_end;
+    std::vector<double> Vector_begin;
+
+    int count = 0;
+    for (int row = 0; row <= rows; ++row){
+        for (int col = 0; col <= cols; ++col) {
+            if(A.coeff(row, col)){
+                if(col < row) {
+                    Vector_end.push_back(col);
+                    Vector_begin.push_back(row);
+                    count++;
+                }
+            }
+        }
+    }
+    MatrixXd incidence(Vector_end.size(), Vector_end.size());
+    incidence.setZero();
+    for(int i=0;i<Vector_end.size();++i){
+        incidence(Vector_end[i],i) = 1;
+        incidence(Vector_begin[i],i) = -1;
+    }
+
+    SparseMatrix<double> sparse_M = incidence.sparseView();
+    sparse_M = sparse_M.transpose();
+    return sparse_M;
 }
 
 SparseMatrix<double> compute_D(MatrixXd V) {
@@ -199,20 +233,20 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         MatrixXd new_V;
 
         SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
-        //MatrixXd M = Incidence_Matrix(A);
-        while ((X - pre_X).norm() >= 0.0001) {
-            new_V = D * X;
-            MatrixXd U = knnsearch(new_V, Target_V, 1);
-
-            Matrix4d I3 = Matrix3d::Identity();
-            MatrixXd P2(I3.rows() * W.rows(), I3.cols() * W.cols());
-            P2.setZero();
-
-            for (int i = 0; i < I3.rows(); i++)
-            {
-                P2.block(i*W.rows(), i*W.cols(), W.rows(), W.cols()) = W(i, i) * I3;
-            }
-        }
+        SparseMatrix<double> M = Incidence_Matrix(A);
+//        while ((X - pre_X).norm() >= 0.0001) {
+//            new_V = D * X;
+//            MatrixXd U = knnsearch(new_V, Target_V, 1);
+//
+//            Matrix4d I3 = Matrix3d::Identity();
+//            MatrixXd P2(I3.rows() * W.rows(), I3.cols() * W.cols());
+//            P2.setZero();
+//
+//            for (int i = 0; i < I3.rows(); i++)
+//            {
+//                P2.block(i*W.rows(), i*W.cols(), W.rows(), W.cols()) = W(i, i) * I3;
+//            }
+//        }
     }
 
 //    MatrixXd X = zeros(3, 4 * num_V).transpose();
