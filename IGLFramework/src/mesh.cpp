@@ -105,29 +105,49 @@ MatrixXi Adjacency_Matrix(int num_V, MatrixXd F) {
     }
 }
 
-MatrixXd compute_D(MatrixXd V) {
+SparseMatrix<double> compute_D(MatrixXd V) {
     int nVert = V.rows();
-    SparseMatrix<double> D(nVert, 4*nVert);
-    MatrixXd I(nVert, 1);
-    MatrixXd J = 4 * I;
-    MatrixXd tempV(4, 1);
+    SparseMatrix<double> sparse_D;
+    MatrixXd D(nVert, nVert * 4);
     for (int i = 0; i < nVert; i++) {
-        
+         D(i, i * 4) = V(i, 0);
+         D(i, i * 4 + 1) = V(i, 1);
+         D(i, i * 4 + 2) = V(i, 2);
+         D(i, i * 4 + 3) = 1;
     }
-//    int num_V = V.rows();
-//    MatrixXd D(num_V * 4, num_V);
-//    for (int i = 0; i < num_V; i++) {
-//        MatrixXd hom_v = V.row(i) << 1;
-//        D.block<4,1>(i * 4, i) = hom_v.transpose();
-//    }
+    sparse_D = D.sparseView();
+    return sparse_D;
 }
 
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
-    MatrixXd R, t;
-    double dist_err;
-    int num_V = Temp_V.rows();
-    int num_F = Temp_F.rows();
+
+    int nVert = Temp_V.rows();
+    int nFace = Temp_F.rows();
     int gamma = 1;
+    double dist_err;
+
+    SparseMatrix<double> D;
+    MatrixXd R, t;
+    MatrixXd W = MatrixXd::Ones(nVert, 1);
+    MatrixXd X(3, 4);
+    VectorXd alpha = VectorXd::LinSpaced(20, 100, 10);
+    int nAlpha = alpha.rows();
+
+    R = MatrixXd::Identity(3, 3);
+    t = MatrixXd::Zero(3, 1);
+    X << R, t;
+
+    D = compute_D(Temp_V);
+
+    for (int i = 0; i < nAlpha; i++) {
+        double curr_alpha = alpha(i);
+        MatrixXd pre_X = 10 * X;
+
+        while ((X - pre_X).norm() >= 0.0001) {
+            
+        }
+    }
+
 //    MatrixXd X = zeros(3, 4 * num_V).transpose();
 //    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);
 //    MatrixXd M = V;
