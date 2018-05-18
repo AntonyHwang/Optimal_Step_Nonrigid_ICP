@@ -96,13 +96,56 @@ tuple<Matrix3d, Vector3d, double> mesh::ICP(MatrixXd Pv, MatrixXd Qv, int step_s
     return {R, t, dist};
 }
 
-MatrixXi Adjacency_Matrix(int num_V, MatrixXd F) {
-    MatrixXi adj_m(num_V, num_V);
-    for (int i = 0; i < F.rows(); i++) {
-        int v0 = F(i, 0);
-        int v1 = F(i, 1);
-        int v2 = F(i, 2);
+
+MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
+    const size_t dim = 3;
+    const size_t N_q = target.rows();
+    const size_t N_p = source.rows();
+    double dist = 0;
+
+    Matrix<double, Dynamic, Dynamic>  mat(N_q, dim);
+
+    for (size_t i = 0; i < N_q; i++)
+        for (size_t d = 0; d < dim; d++)
+            mat(i,d) = target(i,d);
+
+//	cout << mat << endl;
+    const size_t num_results = 1;
+    typedef KDTreeEigenMatrixAdaptor<Matrix<double, Dynamic, Dynamic> > my_kd_tree_t;
+
+    my_kd_tree_t mat_index(mat, 10 /* max leaf */ );
+    mat_index.index->buildIndex();
+
+    // Query point:
+    vector<double> query_pt(dim);
+    //matching results
+    Matrix<double, Dynamic, Dynamic>  results(N_p, dim);
+    Matrix<double, Dynamic, Dynamic>  Q(N_p, dim);
+    int count = 0;
+    for (size_t i = 0; i < source.rows(); i+=sample) {
+        for (size_t d = 0; d < dim; d++)
+            query_pt[d] = source(i, d);
+        // do a knn search
+        vector<size_t> ret_indexes(num_results);
+        vector<double> out_dists_sqr(num_results);
+
+        nanoflann::KNNResultSet<double> resultSet(num_results);
+
+        resultSet.init(&ret_indexes[0], &out_dists_sqr[0]);
+        mat_index.index->findNeighbors(resultSet, &query_pt[0], nanoflann::SearchParams(10));
+
+        int idx = ret_indexes[0];
+        results.row(i) = target.row(idx);
     }
+    return results;
+}
+
+MatrixXd Adjacency_Matrix(int num_V, MatrixXd F) {
+
+}
+
+MatrixXd Incidence_Matrix(MatrixXd A) {
+
 }
 
 SparseMatrix<double> compute_D(MatrixXd V) {
@@ -128,6 +171,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V
 
     SparseMatrix<double> D;
     MatrixXd R, t;
+    MatrixXd G(4, 4);
+    G.diagonal() << 1, 1, 1, 1;
     MatrixXd W = MatrixXd::Ones(nVert, 1);
     MatrixXd X(3, 4);
     VectorXd alpha = VectorXd::LinSpaced(20, 100, 10);
@@ -142,9 +187,13 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
         MatrixXd pre_X = 10 * X;
+        MatrixXd new_V;
 
+        MatrixXd A = Adjacency_Matrix(nVert, Temp_F);
+        MatrixXd M = Incidence_Matrix(A);
         while ((X - pre_X).norm() >= 0.0001) {
-            
+            new_V = D * X;
+            MatrixXd U = knnsearch(new_V, Target_V, 1);
         }
     }
 
