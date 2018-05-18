@@ -14,7 +14,6 @@
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
 
-
 using namespace Eigen;
 using namespace std;
 using namespace nanoflann;
@@ -204,6 +203,15 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
             MatrixXd U = knnsearch(new_V, Target_V, 1);
+
+            Matrix4d I3 = Matrix3d::Identity();
+            MatrixXd P2(I3.rows() * W.rows(), I3.cols() * W.cols());
+            P2.setZero();
+
+            for (int i = 0; i < I3.rows(); i++)
+            {
+                P2.block(i*W.rows(), i*W.cols(), W.rows(), W.cols()) = W(i, i) * I3;
+            }
         }
     }
 
