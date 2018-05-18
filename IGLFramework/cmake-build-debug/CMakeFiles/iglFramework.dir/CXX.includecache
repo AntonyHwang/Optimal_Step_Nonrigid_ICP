@@ -1644,6 +1644,24 @@ vector
 adjacency_list.cpp
 ../3rdparty/libigl/include/igl/adjacency_list.cpp
 
+../3rdparty/libigl/include/igl/adjacency_matrix.cpp
+adjacency_matrix.h
+../3rdparty/libigl/include/igl/adjacency_matrix.h
+verbose.h
+../3rdparty/libigl/include/igl/verbose.h
+vector
+-
+
+../3rdparty/libigl/include/igl/adjacency_matrix.h
+igl_inline.h
+../3rdparty/libigl/include/igl/igl_inline.h
+Eigen/Dense
+-
+Eigen/Sparse
+-
+adjacency_matrix.cpp
+../3rdparty/libigl/include/igl/adjacency_matrix.cpp
+
 ../3rdparty/libigl/include/igl/axis_angle_to_quat.cpp
 axis_angle_to_quat.h
 ../3rdparty/libigl/include/igl/axis_angle_to_quat.h
@@ -2927,6 +2945,8 @@ iostream
 -
 Eigen/Dense
 -
+Eigen/Sparse
+-
 
 ../include/nanoflann.hpp
 vector
@@ -3005,6 +3025,8 @@ MatOp/SparseGenMatProd.h
 -
 Eigen/IterativeLinearSolvers
 -
+igl/adjacency_matrix.h
+/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/adjacency_matrix.h
 
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp
 acq/normalEstimation.h

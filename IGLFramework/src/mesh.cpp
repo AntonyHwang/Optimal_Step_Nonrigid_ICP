@@ -149,7 +149,6 @@ SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi F) {
 //    F(1,0) = 2;
 //    F(1,1) = 3;
 //    F(1,2) = 4;
-    cout<<  F;
     Eigen::SparseMatrix<double> A;
     igl::adjacency_matrix(F, A);
     return A;

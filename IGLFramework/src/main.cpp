@@ -442,8 +442,9 @@ int main(int argc, char *argv[]) {
                 /* Displayed label: */ "Non-Rigid ICP",
                 /*  Lambda to call: */ [&](){
             mesh msh;
-                    cout<< F;
-            //SparseMatrix<double> A = msh.Adjacency_Matrix(F);
+            acq::DecoratedCloud &cloud = cloudManager.getCloud(0);
+            MatrixXi F = cloud.getFaces();
+            SparseMatrix<double> A = msh.Adjacency_Matrix(F);
             //cout<< A;
             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
         });

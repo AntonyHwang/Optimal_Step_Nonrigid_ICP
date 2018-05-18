@@ -1023,6 +1023,8 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/Index
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/LinSpaced.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/PI.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/SortableRow.h
+CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/adjacency_matrix.cpp
+CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/adjacency_matrix.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/colon.cpp
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/colon.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/doublearea.cpp
@@ -1051,6 +1053,7 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/sort.
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/sort.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/squared_edge_lengths.cpp
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/squared_edge_lengths.h
+CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../3rdparty/libigl/include/igl/verbose.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/GenEigsSolver.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/LinAlg/DoubleShiftQR.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/LinAlg/TridiagEigen.h
