@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
                       << "...exiting...\n";
             return EXIT_FAILURE;
         } //...if vertices read
-
+        //cout<<  F;
         // Store read vertices and faces
         cloudManager.addCloud(acq::DecoratedCloud(V, F));
 
@@ -442,6 +442,9 @@ int main(int argc, char *argv[]) {
                 /* Displayed label: */ "Non-Rigid ICP",
                 /*  Lambda to call: */ [&](){
             mesh msh;
+                    cout<< F;
+            //SparseMatrix<double> A = msh.Adjacency_Matrix(F);
+            //cout<< A;
             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
         });
 

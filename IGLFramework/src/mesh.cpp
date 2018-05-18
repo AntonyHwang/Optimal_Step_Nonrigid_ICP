@@ -12,6 +12,7 @@
 #include <GenEigsSolver.h>
 #include <MatOp/SparseGenMatProd.h>
 #include <Eigen/IterativeLinearSolvers>
+#include "igl/adjacency_matrix.h"
 
 
 using namespace Eigen;
@@ -140,8 +141,18 @@ MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
     return results;
 }
 
-MatrixXd Adjacency_Matrix(int num_V, MatrixXd F) {
-
+SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi F) {
+//    MatrixXi F(2,3);
+//    F(0,0) = 1;
+//    F(0,1) = 2;
+//    F(0,2) = 4;
+//    F(1,0) = 2;
+//    F(1,1) = 3;
+//    F(1,2) = 4;
+    cout<<  F;
+    Eigen::SparseMatrix<double> A;
+    igl::adjacency_matrix(F, A);
+    return A;
 }
 
 MatrixXd Incidence_Matrix(MatrixXd A) {
@@ -162,7 +173,7 @@ SparseMatrix<double> compute_D(MatrixXd V) {
     return sparse_D;
 }
 
-MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
+MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
 
     int nVert = Temp_V.rows();
     int nFace = Temp_F.rows();
@@ -189,8 +200,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXd Temp_F, MatrixXd Target_V
         MatrixXd pre_X = 10 * X;
         MatrixXd new_V;
 
-        MatrixXd A = Adjacency_Matrix(nVert, Temp_F);
-        MatrixXd M = Incidence_Matrix(A);
+        SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
+        //MatrixXd M = Incidence_Matrix(A);
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
             MatrixXd U = knnsearch(new_V, Target_V, 1);
