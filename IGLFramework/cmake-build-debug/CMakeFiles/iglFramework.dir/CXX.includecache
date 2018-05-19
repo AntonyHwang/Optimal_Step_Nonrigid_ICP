@@ -1426,6 +1426,20 @@ IndexedViewMethods.h
 
 ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
+../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/KroneckerProduct
+../../Eigen/Core
+../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Core
+../../Eigen/src/Core/util/DisableStupidWarnings.h
+../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/Core/util/DisableStupidWarnings.h
+../../Eigen/src/SparseCore/SparseUtil.h
+../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/SparseCore/SparseUtil.h
+src/KroneckerProduct/KroneckerTensorProduct.h
+../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/KroneckerProduct/KroneckerTensorProduct.h
+../../Eigen/src/Core/util/ReenableStupidWarnings.h
+../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/Core/util/ReenableStupidWarnings.h
+
+../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/KroneckerProduct/KroneckerTensorProduct.h
+
 ../3rdparty/libigl/external/nanogui/ext/glfw/include/GLFW/glfw3.h
 stddef.h
 -
@@ -3027,6 +3041,8 @@ Eigen/IterativeLinearSolvers
 -
 igl/adjacency_matrix.h
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/adjacency_matrix.h
+unsupported/Eigen/KroneckerProduct
+-
 
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp
 acq/normalEstimation.h

@@ -13,6 +13,7 @@
 #include <MatOp/SparseGenMatProd.h>
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
+#include <unsupported/Eigen//KroneckerProduct>
 
 
 using namespace Eigen;
@@ -181,33 +182,33 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
         }
     }
     cout << "end for" <<endl;
-    MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
+    //MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
+    Eigen::SparseMatrix<double> incidence(Vector_end.size(), Vector_end.size());
     cout << "end init" << Vector_end.size() << " "<< Vector_begin.size() <<endl;
 
     for(int i=0;i<Vector_end.size();i++){
-        incidence(Vector_end[i],i) = 1;
-        incidence(Vector_begin[i],i) = -1;
-        cout << i <<endl;
+        incidence.insert(Vector_end[i],i) = 1;
+        incidence.insert(Vector_begin[i],i) = -1;
+        //cout << i <<endl;
     }
     cout << "end for" <<endl;
-    SparseMatrix<double> sparse_M = incidence.sparseView();
+    //SparseMatrix<double> sparse_M = incidence.sparseView();
     cout << "sparse_M" <<endl;
-    sparse_M = sparse_M.transpose();
-    return sparse_M;
+    //sparse_M = sparse_M.transpose();
+    //return sparse_M;
+    return incidence.transpose();
 }
 
 SparseMatrix<double> compute_D(MatrixXd V) {
     int nVert = V.rows();
-    SparseMatrix<double> sparse_D;
-    MatrixXd D(nVert, nVert * 4);
+    SparseMatrix<double> D(nVert, nVert * 4);
     for (int i = 0; i < nVert; i++) {
-         D(i, i * 4) = V(i, 0);
-         D(i, i * 4 + 1) = V(i, 1);
-         D(i, i * 4 + 2) = V(i, 2);
-         D(i, i * 4 + 3) = 1;
+         D.insert(i, i * 4) = V(i, 0);
+         D.insert(i, i * 4 + 1) = V(i, 1);
+         D.insert(i, i * 4 + 2) = V(i, 2);
+         D.insert(i, i * 4 + 3) = 1;
     }
-    sparse_D = D.sparseView();
-    return sparse_D;
+    return D;
 }
 
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
@@ -238,20 +239,24 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     cout << "Adjacency_Matrix" <<endl;
     SparseMatrix<double> M = Incidence_Matrix(A);
     cout << "Incidence_Matrix" <<endl;
-    MatrixXd M_dM = MatrixXd(M);
     cout << "Incidence_Matrix END" <<endl;
 
-    MatrixXd MoG(G.rows() * M.rows(), G.cols() * M.cols());
-    MoG.setZero();
+    SparseMatrix<double> MoG(G.rows() * M.rows(), G.cols() * M.cols());
 
-
-    for (int i = 0; i < M.rows(); i++)
-    {
-        for (int j = 0; j < M.cols(); j++)
-        {
-            MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M_dM(i, j) * G;
-        }
-    }
+//    for (int i = 0; i < M.rows(); i++)
+//    {
+//        for (int j = 0; j < M.cols(); j++)
+//        {
+//            MatrixXd temp = M.coeff(i, j) * G;
+//            for (int row; row < temp.rows(); row++) {
+//                for (int col; col < temp.cols(); col++) {
+//                    MoG.insert(i * G.rows() + row, j * G.cols() + col) = temp(row, col);
+//                    //MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M.coeff(i, j) * G;
+//                }
+//            }
+//        }
+//    }
+    MoG = kroneckerProduct(M, G);
     cout << "MoG END" <<endl;
 
     MatrixXd new_V;
@@ -263,6 +268,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
             MatrixXd U = knnsearch(new_V, Target_V, 1);
+            cout << "KNN END" << endl;
             //
 //            Matrix3d I3 = Matrix3d::Identity();
 //            MatrixXd W_I3(I3.rows() * W.rows(), I3.cols() * W.cols());
@@ -272,23 +278,54 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 //            {
 //                W_I3.block(i*W.rows(), i*W.cols(), I3.rows(), I3.cols()) = W(i, 0) * I3;
 //            }
-            MatrixXd A, B;
-            MatrixXd WD = W * D;
-            MatrixXd WU = W * U;
-            MatrixXd aMoG = alpha * MoG;
-            MatrixXd zeros = MatrixXd::Zero(aMoG.rows(), aMoG.cols());
+            cout << W.rows() << " " << W.cols() << endl;
+            cout << D.rows() << " " << D.cols() << endl;
+            SparseMatrix<double> WD = (W * D).sparseView();
+            cout << "Built WD" << endl;
+            SparseMatrix<double> WU = (W * U).sparseView();
+            cout << "Built WU" << endl;
+            SparseMatrix<double> aMoG = alpha * MoG;
+            cout << "Built aMoG" << endl;
+            SparseMatrix<double> zeros(aMoG.rows(), aMoG.cols());
+            cout << "Matrices Built" << endl;
 
-            A << aMoG;
-            A.conservativeResize(A.rows() + WD.rows(), A.cols());
-            A.col(A.rows() - WD.rows()) = WD;
+//            A << aMoG;
+//            A.conservativeResize(A.rows() + WD.rows(), A.cols());
+//            A.col(A.rows() - WD.rows()) = WD;
 
-            B << zeros,
-            B.conservativeResize(B.rows() + WU.rows(), B.cols());
-            B.col(B.rows() - WU.rows()) = WU;
+            SparseMatrix<double> A(aMoG.rows() + WD.rows(), aMoG.cols());
+            A.reserve(aMoG.nonZeros() + WD.nonZeros());
+            cout << "Build A" << endl;
+            for(Index c = 0; c < aMoG.cols(); ++c)
+            {
+                for(SparseMatrix<double>::InnerIterator itL(aMoG, c); itL; ++itL)
+                    A.insertBack(itL.row(), c) = itL.value();
+                for(SparseMatrix<double>::InnerIterator itC(WD, c); itC; ++itC)
+                    A.insertBack(itC.row(), c) = itC.value();
+            }
+            A.finalize();
+
+//            B << zeros,
+//            B.conservativeResize(B.rows() + WU.rows(), B.cols());
+//            B.col(B.rows() - WU.rows()) = WU;
+
+            SparseMatrix<double> B(zeros.rows() + WU.rows(), zeros.cols());
+            B.reserve(zeros.nonZeros() + WU.nonZeros());
+            cout << "Build B" << endl;
+            for(Index c = 0; c < zeros.cols(); ++c)
+            {
+                for(SparseMatrix<double>::InnerIterator itL(zeros, c); itL; ++itL)
+                    A.insertBack(itL.row(), c) = itL.value();
+                for(SparseMatrix<double>::InnerIterator itC(WU, c); itC; ++itC)
+                    A.insertBack(itC.row(), c) = itC.value();
+            }
+            B.finalize();
 
             pre_X = X;
-            X = (A.transpose() * A).inverse() * (A.transpose() * B);
+            cout << "AB END" << endl;
+            X = MatrixXd(A.transpose() * A).inverse() * (A.transpose() * B);
         }
+        cout << "while END";
     }
     new_V = D * X;
     return new_V;

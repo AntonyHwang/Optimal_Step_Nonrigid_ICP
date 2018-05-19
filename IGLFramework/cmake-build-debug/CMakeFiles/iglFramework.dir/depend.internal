@@ -1020,6 +1020,8 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/IndexedViewMethods.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/KroneckerProduct
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/KroneckerProduct/KroneckerTensorProduct.h
  ../3rdparty/libigl/include/igl/IndexComparison.h
  ../3rdparty/libigl/include/igl/LinSpaced.h
  ../3rdparty/libigl/include/igl/PI.h
