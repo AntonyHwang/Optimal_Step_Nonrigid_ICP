@@ -168,8 +168,9 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
     std::vector<double> Vector_begin;
 
     int count = 0;
-    for (int row = 0; row <= rows; ++row){
-        for (int col = 0; col <= cols; ++col) {
+    for (int row = 0; row <= rows; row++){
+
+        for (int col = 0; col <= cols; col++) {
             if(A.coeff(row, col)){
                 if(col < row) {
                     Vector_end.push_back(col);
@@ -179,14 +180,18 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
             }
         }
     }
-    MatrixXd incidence(Vector_end.size(), Vector_end.size());
-    incidence.setZero();
-    for(int i=0;i<Vector_end.size();++i){
+    cout << "end for" <<endl;
+    MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
+    cout << "end init" << Vector_end.size() << " "<< Vector_begin.size() <<endl;
+
+    for(int i=0;i<Vector_end.size();i++){
         incidence(Vector_end[i],i) = 1;
         incidence(Vector_begin[i],i) = -1;
+        cout << i <<endl;
     }
-
+    cout << "end for" <<endl;
     SparseMatrix<double> sparse_M = incidence.sparseView();
+    cout << "sparse_M" <<endl;
     sparse_M = sparse_M.transpose();
     return sparse_M;
 }
@@ -208,6 +213,7 @@ SparseMatrix<double> compute_D(MatrixXd V) {
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
 
     int nVert = Temp_V.rows();
+    cout << nVert <<endl;
     int nFace = Temp_F.rows();
     int gamma = 1;
     double dist_err;
@@ -227,13 +233,17 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     X << R, t;
 
     D = compute_D(Temp_V);
-
+    cout << "compute_D" <<endl;
     SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
+    cout << "Adjacency_Matrix" <<endl;
     SparseMatrix<double> M = Incidence_Matrix(A);
+    cout << "Incidence_Matrix" <<endl;
     MatrixXd M_dM = MatrixXd(M);
+    cout << "Incidence_Matrix END" <<endl;
 
     MatrixXd MoG(G.rows() * M.rows(), G.cols() * M.cols());
     MoG.setZero();
+
 
     for (int i = 0; i < M.rows(); i++)
     {
@@ -242,17 +252,18 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M_dM(i, j) * G;
         }
     }
+    cout << "MoG END" <<endl;
 
     MatrixXd new_V;
-
+    cout << "nAlpha END" <<endl;
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
         MatrixXd pre_X = 10 * X;
-
+        
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
             MatrixXd U = knnsearch(new_V, Target_V, 1);
-//
+            //
 //            Matrix3d I3 = Matrix3d::Identity();
 //            MatrixXd W_I3(I3.rows() * W.rows(), I3.cols() * W.cols());
 //            W_I3.setZero();
@@ -280,6 +291,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         }
     }
     new_V = D * X;
+    return new_V;
 
 //    MatrixXd X = zeros(3, 4 * num_V).transpose();
 //    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);

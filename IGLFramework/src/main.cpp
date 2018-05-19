@@ -84,10 +84,20 @@ int main(int argc, char *argv[]) {
     float floatVariable = 0.1f;
 
     // Load a mesh in OFF format
-    std::string meshPath = "../3rdparty/libigl/tutorial/shared/bunny.off";
+    std::string mesh1 = "../data/bun090.off";
+    std::string mesh2 = "../data/bun045.off";
     if (argc > 1) {
-        meshPath = std::string(argv[1]);
-        if (meshPath.find(".off") == std::string::npos) {
+        mesh1 = std::string(argv[1]);
+        if (mesh1.find(".off") == std::string::npos) {
+            std::cerr << "Only ready for  OFF files for now...\n";
+            return EXIT_FAILURE;
+        }
+    } else {
+        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
+    }
+    if (argc > 1) {
+        mesh2 = std::string(argv[1]);
+        if (mesh2.find(".off") == std::string::npos) {
             std::cerr << "Only ready for  OFF files for now...\n";
             return EXIT_FAILURE;
         }
@@ -107,42 +117,59 @@ int main(int argc, char *argv[]) {
     // Read mesh from meshPath
     {
         // Pointcloud vertices, N rows x 3 columns.
-        Eigen::MatrixXd V;
+        Eigen::MatrixXd Temp_V, Target_V;
         // Face indices, M x 3 integers referring to V.
-        Eigen::MatrixXi F;
-        // Read mesh
-        igl::readOFF(meshPath, V, F);
+        Eigen::MatrixXi Temp_F, Target_F;
+
+        // Read mesh1
+        igl::readOFF(mesh1, Temp_V, Temp_F);
         // Check, if any vertices read
-        if (V.rows() <= 0) {
-            std::cerr << "Could not read mesh at " << meshPath
+        if (Temp_V.rows() <= 0) {
+            std::cerr << "Could not read mesh at " << mesh1
                       << "...exiting...\n";
             return EXIT_FAILURE;
         } //...if vertices read
-        //cout<<  F;
-        // Store read vertices and faces
-        cloudManager.addCloud(acq::DecoratedCloud(V, F));
 
+        // Store read vertices and faces
+        cloudManager.addCloud(acq::DecoratedCloud(Temp_V, Temp_F));
+
+        // Read mesh1
+        igl::readOFF(mesh2, Target_V, Target_F);
+        // Check, if any vertices read
+        if (Target_V.rows() <= 0) {
+            std::cerr << "Could not read mesh at " << mesh2
+                      << "...exiting...\n";
+            return EXIT_FAILURE;
+        } //...if vertices read
+
+        // Store read vertices and faces
+        cloudManager.addCloud(acq::DecoratedCloud(Target_V, Target_F));
+
+
+        MatrixXd V(Temp_V.rows()+Target_V.rows(),Temp_V.cols());
+        V<<Temp_V,Target_V;
+        MatrixXi F(Temp_F.rows()+Target_F.rows(),Temp_F.cols());
+        F<<Temp_F,(Target_F.array()+Temp_V.rows());
+
+        // Store(overwrite) new vertices and faces:
+        cloudManager.setCloud(acq::DecoratedCloud(V, F),0);
+        cloudManager.setCloud(acq::DecoratedCloud(Temp_V,Temp_F),1);
+        cloudManager.setCloud(acq::DecoratedCloud(Target_V,Target_F),2);
+        viewer.data.clear();
         // Show mesh
         viewer.data.set_mesh(
                 cloudManager.getCloud(0).getVertices(),
                 cloudManager.getCloud(0).getFaces()
         );
 
-        // Calculate normals on launch
-        cloudManager.getCloud(0).setNormals(
-                acq::recalcNormals(
-                        /* [in]      K-neighbours for FLANN: */ kNeighbours,
-                        /* [in]             Vertices matrix: */ cloudManager.getCloud(0).getVertices(),
-                        /* [in]      max neighbour distance: */ maxNeighbourDist
-                )
-        );
+        // Set color for each Mesh.
+        Eigen::MatrixXd Color(F.rows(),3);
+        Color<<
+             Eigen::RowVector3d(0.99,0.2,0.6).replicate(Temp_F.rows(),1), //pink
+                Eigen::RowVector3d(1.0,0.7,0.2).replicate(Target_F.rows(),1); //yellow 0.99,0.2,0.6
 
-        // Update viewer
-        acq::setViewerNormals(
-                viewer,
-                cloudManager.getCloud(0).getVertices(),
-                cloudManager.getCloud(0).getNormals()
-        );
+        viewer.data.set_colors(Color);
+
     } //...read mesh
 
     // Extend viewer menu using a lambda function
@@ -442,10 +469,16 @@ int main(int argc, char *argv[]) {
                         /* Displayed label: */ "Non-Rigid ICP",
                         /*  Lambda to call: */ [&](){
                             mesh msh;
-                            acq::DecoratedCloud &cloud = cloudManager.getCloud(0);
-                            MatrixXi F = cloud.getFaces();
-                            SparseMatrix<double> A = msh.Adjacency_Matrix(F);
-                            SparseMatrix<double> M = msh.Incidence_Matrix(A);
+                            acq::DecoratedCloud &cloud = cloudManager.getCloud(1);
+                            MatrixXi Temp_F = cloud.getFaces();
+                            MatrixXd Temp_V = cloud.getVertices();
+                            acq::DecoratedCloud &cloud2 = cloudManager.getCloud(2);
+                            MatrixXi Target_F = cloud2.getFaces();
+                            MatrixXd Target_V = cloud2.getVertices();
+//                            SparseMatrix<double> A = msh.Adjacency_Matrix(Temp_F);
+//                            SparseMatrix<double> M = msh.Incidence_Matrix(A);
+                            MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F);
+                            cout << new_V;
                             //cout<< A;
                             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
                         });
