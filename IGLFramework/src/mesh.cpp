@@ -234,19 +234,19 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
         SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
         SparseMatrix<double> M = Incidence_Matrix(A);
-//        while ((X - pre_X).norm() >= 0.0001) {
-//            new_V = D * X;
-//            MatrixXd U = knnsearch(new_V, Target_V, 1);
-//
-//            Matrix4d I3 = Matrix3d::Identity();
-//            MatrixXd P2(I3.rows() * W.rows(), I3.cols() * W.cols());
-//            P2.setZero();
-//
-//            for (int i = 0; i < I3.rows(); i++)
-//            {
-//                P2.block(i*W.rows(), i*W.cols(), W.rows(), W.cols()) = W(i, i) * I3;
-//            }
-//        }
+        while ((X - pre_X).norm() >= 0.0001) {
+            new_V = D * X;
+            MatrixXd U = knnsearch(new_V, Target_V, 1);
+
+            Matrix3d I3 = Matrix3d::Identity();
+            MatrixXd W_I3(I3.rows() * W.rows(), I3.cols() * W.cols());
+            W_I3.setZero();
+
+            for (int i = 0; i < W.rows(); i++)
+            {
+                W_I3.block(i*W.rows(), i*W.cols(), I3.rows(), I3.cols()) = W(i, 0) * I3;
+            }
+        }
     }
 
 //    MatrixXd X = zeros(3, 4 * num_V).transpose();
