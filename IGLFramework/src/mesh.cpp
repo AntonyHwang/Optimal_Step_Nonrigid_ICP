@@ -216,7 +216,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     MatrixXd R, t;
     MatrixXd G(4, 4);
     G.diagonal() << 1, 1, 1, 1;
-    MatrixXd W = MatrixXd::Ones(nVert, 1);
+    VectorXd WVec = VectorXd::Ones(nVert);
+    MatrixXd W = WVec.asDiagonal();
     MatrixXd X(3, 4);
     VectorXd alpha = VectorXd::LinSpaced(20, 100, 10);
     int nAlpha = alpha.rows();
@@ -227,27 +228,55 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
     D = compute_D(Temp_V);
 
+    SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
+    SparseMatrix<double> M = Incidence_Matrix(A);
+    MatrixXd M_dM = MatrixXd(M);
+
+    MatrixXd MoG(G.rows() * M.rows(), G.cols() * M.cols());
+    MoG.setZero();
+
+    for (int i = 0; i < M.rows(); i++)
+    {
+        for (int j = 0; j < M.cols(); j++)
+        {
+            MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M_dM(i, j) * G;
+        }
+    }
+
+    MatrixXd new_V;
+
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
         MatrixXd pre_X = 10 * X;
-        MatrixXd new_V;
 
-        SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
-        SparseMatrix<double> M = Incidence_Matrix(A);
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
             MatrixXd U = knnsearch(new_V, Target_V, 1);
+//
+//            Matrix3d I3 = Matrix3d::Identity();
+//            MatrixXd W_I3(I3.rows() * W.rows(), I3.cols() * W.cols());
+//            W_I3.setZero();
+//
+//            for (int i = 0; i < W.rows(); i++)
+//            {
+//                W_I3.block(i*W.rows(), i*W.cols(), I3.rows(), I3.cols()) = W(i, 0) * I3;
+//            }
+            MatrixXd A, B;
+            MatrixXd WD = W * D;
+            MatrixXd WU = W * U;
+            MatrixXd aMoG = alpha * MoG;
+            MatrixXd zeros = MatrixXd::Zero(aMoG.rows(), aMoG.cols());
 
-            Matrix3d I3 = Matrix3d::Identity();
-            MatrixXd W_I3(I3.rows() * W.rows(), I3.cols() * W.cols());
-            W_I3.setZero();
+            A << aMoG;
+            A.conservativeResize(A.rows() + WD.rows(), A.cols());
+            A.col(A.rows() - WD.rows()) = WD;
 
-            for (int i = 0; i < W.rows(); i++)
-            {
-                W_I3.block(i*W.rows(), i*W.cols(), I3.rows(), I3.cols()) = W(i, 0) * I3;
-            }
+            B << zeros,
+            B.conservativeResize(B.rows() + WU.rows(), B.cols());
+            B.col(B.rows() - WU.rows()) = WU;
         }
     }
+    new_V = D * X;
 
 //    MatrixXd X = zeros(3, 4 * num_V).transpose();
 //    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);
