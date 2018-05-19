@@ -229,6 +229,12 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     VectorXd alpha = VectorXd::LinSpaced(20, 100, 10);
     int nAlpha = alpha.rows();
 
+    MatrixXd pre_X;
+    MatrixXd U;
+    SparseMatrix<double> WD;
+    SparseMatrix<double> WU;
+    SparseMatrix<double> aMoG;
+
     R = MatrixXd::Identity(3, 3);
     t = MatrixXd::Zero(3, 1);
     X << R, t;
@@ -263,11 +269,11 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     cout << "nAlpha END" <<endl;
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
-        MatrixXd pre_X = 10 * X;
-        
+        pre_X = 10 * X;
+        cout << (X - pre_X).norm() << endl;
         while ((X - pre_X).norm() >= 0.0001) {
             new_V = D * X;
-            MatrixXd U = knnsearch(new_V, Target_V, 1);
+            U = knnsearch(new_V, Target_V, 1);
             cout << "KNN END" << endl;
             //
 //            Matrix3d I3 = Matrix3d::Identity();
@@ -280,11 +286,11 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 //            }
             cout << W.rows() << " " << W.cols() << endl;
             cout << D.rows() << " " << D.cols() << endl;
-            SparseMatrix<double> WD = (W * D).sparseView();
+            WD = (W * D).sparseView();
             cout << "Built WD" << endl;
-            SparseMatrix<double> WU = (W * U).sparseView();
+            WU = (W * U).sparseView();
             cout << "Built WU" << endl;
-            SparseMatrix<double> aMoG = alpha * MoG;
+            aMoG = alpha * MoG;
             cout << "Built aMoG" << endl;
             SparseMatrix<double> zeros(aMoG.rows(), aMoG.cols());
             cout << "Matrices Built" << endl;
@@ -325,7 +331,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             cout << "AB END" << endl;
             X = MatrixXd(A.transpose() * A).inverse() * (A.transpose() * B);
         }
-        cout << "while END";
+        cout << "while END" << endl;
     }
     new_V = D * X;
     return new_V;
