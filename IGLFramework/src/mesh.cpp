@@ -315,9 +315,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             for(Index c = 0; c < zeros.cols(); ++c)
             {
                 for(SparseMatrix<double>::InnerIterator itL(zeros, c); itL; ++itL)
-                    A.insertBack(itL.row(), c) = itL.value();
+                    B.insertBack(itL.row(), c) = itL.value();
                 for(SparseMatrix<double>::InnerIterator itC(WU, c); itC; ++itC)
-                    A.insertBack(itC.row(), c) = itC.value();
+                    B.insertBack(itC.row(), c) = itC.value();
             }
             B.finalize();
 
