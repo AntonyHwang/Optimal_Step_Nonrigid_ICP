@@ -274,6 +274,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             B << zeros,
             B.conservativeResize(B.rows() + WU.rows(), B.cols());
             B.col(B.rows() - WU.rows()) = WU;
+
+            pre_X = X;
+            X = (A.transpose() * A).inverse() * (A.transpose() * B);
         }
     }
     new_V = D * X;
