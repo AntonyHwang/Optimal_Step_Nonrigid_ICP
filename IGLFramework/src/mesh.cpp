@@ -13,7 +13,7 @@
 #include <MatOp/SparseGenMatProd.h>
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
-#include <unsupported/Eigen//KroneckerProduct>
+#include <unsupported/Eigen/KroneckerProduct>
 
 
 using namespace Eigen;
@@ -329,7 +329,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
             pre_X = X;
             cout << "AB END" << endl;
-            X = MatrixXd(A.transpose() * A).inverse() * (A.transpose() * B);
+            //X = MatrixXd(A.transpose() * A).inverse() * (A.transpose() * B);
         }
         cout << "while END" << endl;
     }

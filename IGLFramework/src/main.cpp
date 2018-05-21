@@ -10,7 +10,10 @@
 #include "mesh.h"
 
 #include <iostream>
+#include <fstream>
 
+using namespace Eigen;
+using namespace std;
 namespace acq {
 
 /** \brief                      Re-estimate normals of cloud \p V fitting planes
@@ -65,6 +68,46 @@ namespace acq {
 
 } //...ns acq
 
+MatrixXd read_vertex_file(char file_path[]) {
+    double x, y, z;
+    MatrixXd V(0, 3);
+    ifstream infile(file_path);
+    string line;
+    while (getline(infile, line))
+    {
+        Vector3d temp;
+        infile >> x >> y >> z;
+        temp << x, y, z;
+        V.conservativeResize(V.rows() + 1, V.cols());
+        V.row(V.rows() - 1) = temp.transpose();
+        // process pair (a,b)
+    }
+    infile.close();
+    cout << "first V: " << V.row(0) << endl;
+    cout << "last V: " << V.row(V.rows() - 1) << endl;
+    return V;
+}
+
+MatrixXi read_face_file(char file_path[]) {
+    int v1, v2, v3;
+    MatrixXi F(0, 3);
+    ifstream infile(file_path);
+    string line;
+    while (getline(infile, line))
+    {
+        Vector3i temp;
+        infile >> v1 >> v2 >> v3;
+        temp << v1 - 1, v2 - 1, v3 - 1;
+        F.conservativeResize(F.rows() + 1, F.cols());
+        F.row(F.rows() - 1) = temp.transpose();
+        // process pair (a,b)
+    }
+    infile.close();
+    cout << "first F: " << F.row(0) << endl;
+    cout << "last F: " << F.row(F.rows() - 1) << endl;
+    return F;
+}
+
 int main(int argc, char *argv[]) {
 
     // Pointcloud vertices, N rows x 3 columns.
@@ -83,27 +126,27 @@ int main(int argc, char *argv[]) {
     // Dummy variable to demo GUI
     float floatVariable = 0.1f;
 
-    // Load a mesh in OFF format
-    std::string mesh1 = "../data/bun090.off";
-    std::string mesh2 = "../data/bun045.off";
-    if (argc > 1) {
-        mesh1 = std::string(argv[1]);
-        if (mesh1.find(".off") == std::string::npos) {
-            std::cerr << "Only ready for  OFF files for now...\n";
-            return EXIT_FAILURE;
-        }
-    } else {
-        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
-    }
-    if (argc > 1) {
-        mesh2 = std::string(argv[1]);
-        if (mesh2.find(".off") == std::string::npos) {
-            std::cerr << "Only ready for  OFF files for now...\n";
-            return EXIT_FAILURE;
-        }
-    } else {
-        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
-    }
+//    // Load a mesh in OFF format
+//    std::string mesh1 = "../data/face.off";
+//    std::string mesh2 = "../data/socket2.off";
+//    if (argc > 1) {
+//        mesh1 = std::string(argv[1]);
+//        if (mesh1.find(".off") == std::string::npos) {
+//            std::cerr << "Only ready for  OFF files for now...\n";
+//            return EXIT_FAILURE;
+//        }
+//    } else {
+//        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
+//    }
+//    if (argc > 1) {
+//        mesh2 = std::string(argv[1]);
+//        if (mesh2.find(".off") == std::string::npos) {
+//            std::cerr << "Only ready for  OFF files for now...\n";
+//            return EXIT_FAILURE;
+//        }
+//    } else {
+//        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
+//    }
 
     // Visualize the mesh in a viewer
     igl::viewer::Viewer viewer;
@@ -121,37 +164,64 @@ int main(int argc, char *argv[]) {
         // Face indices, M x 3 integers referring to V.
         Eigen::MatrixXi Temp_F, Target_F;
 
-        // Read mesh1
-        igl::readOFF(mesh1, Temp_V, Temp_F);
-        // Check, if any vertices read
-        if (Temp_V.rows() <= 0) {
-            std::cerr << "Could not read mesh at " << mesh1
-                      << "...exiting...\n";
-            return EXIT_FAILURE;
-        } //...if vertices read
+        char s_v[] = "../data/source_vertex.txt";
+        char s_f[] = "../data/source_face.txt";
+        Temp_V = read_vertex_file(s_v);
+        Temp_F = read_face_file(s_f);
+
+//        // Read mesh1
+//        igl::readOFF(mesh1, Temp_V, Temp_F);
+//        // Check, if any vertices read
+//        if (Temp_V.rows() <= 0) {
+//            std::cerr << "Could not read mesh at " << mesh1
+//                      << "...exiting...\n";
+//            return EXIT_FAILURE;
+//        } //...if vertices read
 
         // Store read vertices and faces
         cloudManager.addCloud(acq::DecoratedCloud(Temp_V, Temp_F));
 
-        // Read mesh1
-        igl::readOFF(mesh2, Target_V, Target_F);
-        // Check, if any vertices read
-        if (Target_V.rows() <= 0) {
-            std::cerr << "Could not read mesh at " << mesh2
-                      << "...exiting...\n";
-            return EXIT_FAILURE;
-        } //...if vertices read
+        char t_v[] = "../data/target_vertex.txt";
+        char t_f[] = "../data/target_face.txt";
+        Target_V = read_vertex_file(t_v);
+        Target_F = read_face_file(t_f);
+
+        cout << Temp_V.rows() << endl;
+        cout << Target_V.rows() << endl;
+        cout << Temp_F.rows() << endl;
+        cout << Target_F.rows() << endl;
+
+//        // Read mesh1
+//        igl::readOFF(mesh2, Target_V, Target_F);
+//        // Check, if any vertices read
+//        if (Target_V.rows() <= 0) {
+//            std::cerr << "Could not read mesh at " << mesh2
+//                      << "...exiting...\n";
+//            return EXIT_FAILURE;
+//        } //...if vertices read
 
         // Store read vertices and faces
         cloudManager.addCloud(acq::DecoratedCloud(Target_V, Target_F));
 
 
-        MatrixXd V(Temp_V.rows()+Target_V.rows(),Temp_V.cols());
-        V<<Temp_V,Target_V;
-        MatrixXi F(Temp_F.rows()+Target_F.rows(),Temp_F.cols());
-        F<<Temp_F,(Target_F.array()+Temp_V.rows());
-
+        MatrixXd V(Temp_V.rows() + Target_V.rows(), Temp_V.cols());
+        V << Temp_V, Target_V;
+        MatrixXi F(Temp_F.rows() + Target_F.rows(),Temp_F.cols());
+        F << Temp_F, (Target_F.array() + Temp_V.rows());
+        double sum = 0;
+        double avg = 0;
+        for (int i = 0; i < V.rows() - 1; i++) {
+            double root = V.row(i).norm();
+            if (abs(root - avg) > 0.8) {
+                cout << (i + 1) << V.row(i) << endl;
+            }
+            sum += root;
+            avg = sum / (i+1);
+        }
+        cout << V.rows() << "/n";
+        cout << F.rows() << "/n";
         // Store(overwrite) new vertices and faces:
+        viewer.data.clear();
         cloudManager.setCloud(acq::DecoratedCloud(V, F),0);
         cloudManager.setCloud(acq::DecoratedCloud(Temp_V,Temp_F),1);
         cloudManager.setCloud(acq::DecoratedCloud(Target_V,Target_F),2);
@@ -164,8 +234,7 @@ int main(int argc, char *argv[]) {
 
         // Set color for each Mesh.
         Eigen::MatrixXd Color(F.rows(),3);
-        Color<<
-             Eigen::RowVector3d(0.99,0.2,0.6).replicate(Temp_F.rows(),1), //pink
+        Color<< Eigen::RowVector3d(0.99,0.2,0.6).replicate(Temp_F.rows(),1), //pink
                 Eigen::RowVector3d(1.0,0.7,0.2).replicate(Target_F.rows(),1); //yellow 0.99,0.2,0.6
 
         viewer.data.set_colors(Color);
