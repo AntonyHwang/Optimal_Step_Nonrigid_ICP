@@ -80,7 +80,6 @@ MatrixXd read_vertex_file(char file_path[]) {
         temp << x, y, z;
         V.conservativeResize(V.rows() + 1, V.cols());
         V.row(V.rows() - 1) = temp.transpose();
-        // process pair (a,b)
     }
     infile.close();
     cout << "first V: " << V.row(0) << endl;
@@ -100,7 +99,6 @@ MatrixXi read_face_file(char file_path[]) {
         temp << v1 - 1, v2 - 1, v3 - 1;
         F.conservativeResize(F.rows() + 1, F.cols());
         F.row(F.rows() - 1) = temp.transpose();
-        // process pair (a,b)
     }
     infile.close();
     cout << "first F: " << F.row(0) << endl;
@@ -186,11 +184,6 @@ int main(int argc, char *argv[]) {
         Target_V = read_vertex_file(t_v);
         Target_F = read_face_file(t_f);
 
-        cout << Temp_V.rows() << endl;
-        cout << Target_V.rows() << endl;
-        cout << Temp_F.rows() << endl;
-        cout << Target_F.rows() << endl;
-
 //        // Read mesh1
 //        igl::readOFF(mesh2, Target_V, Target_F);
 //        // Check, if any vertices read
@@ -208,18 +201,7 @@ int main(int argc, char *argv[]) {
         V << Temp_V, Target_V;
         MatrixXi F(Temp_F.rows() + Target_F.rows(),Temp_F.cols());
         F << Temp_F, (Target_F.array() + Temp_V.rows());
-        double sum = 0;
-        double avg = 0;
-        for (int i = 0; i < V.rows() - 1; i++) {
-            double root = V.row(i).norm();
-            if (abs(root - avg) > 0.8) {
-                cout << (i + 1) << V.row(i) << endl;
-            }
-            sum += root;
-            avg = sum / (i+1);
-        }
-        cout << V.rows() << "/n";
-        cout << F.rows() << "/n";
+
         // Store(overwrite) new vertices and faces:
         viewer.data.clear();
         cloudManager.setCloud(acq::DecoratedCloud(V, F),0);

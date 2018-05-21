@@ -184,7 +184,7 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
     cout << "end for" <<endl;
     //MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
     Eigen::SparseMatrix<double> incidence(Vector_end.size(), Vector_end.size());
-    cout << "end init" << Vector_end.size() << " "<< Vector_begin.size() <<endl;
+    cout << "end init" << Vector_end.size() << " "<< Vector_begin.size() << endl;
 
     for(int i=0;i<Vector_end.size();i++){
         incidence.insert(Vector_end[i],i) = 1;
@@ -242,27 +242,32 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     D = compute_D(Temp_V);
     cout << "compute_D" <<endl;
     SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
-    cout << "Adjacency_Matrix" <<endl;
+    cout << "Adjacency_Matrix" << endl;
     SparseMatrix<double> M = Incidence_Matrix(A);
     cout << "Incidence_Matrix" <<endl;
     cout << "Incidence_Matrix END" <<endl;
 
     SparseMatrix<double> MoG(G.rows() * M.rows(), G.cols() * M.cols());
+    MatrixXd temp;
 
-//    for (int i = 0; i < M.rows(); i++)
-//    {
-//        for (int j = 0; j < M.cols(); j++)
-//        {
-//            MatrixXd temp = M.coeff(i, j) * G;
-//            for (int row; row < temp.rows(); row++) {
-//                for (int col; col < temp.cols(); col++) {
-//                    MoG.insert(i * G.rows() + row, j * G.cols() + col) = temp(row, col);
-//                    //MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M.coeff(i, j) * G;
-//                }
-//            }
-//        }
-//    }
-    MoG = kroneckerProduct(M, G);
+    for (int i = 0; i < M.rows(); i++)
+    {
+        for (int j = 0; j < M.cols(); j++)
+        {
+            temp = M.coeff(i, j) * G;
+            if (temp.norm() != 0) {
+                for (int row; row < temp.rows(); row++) {
+                    for (int col; col < temp.cols(); col++) {
+                        MoG.insert(i * G.rows() + row, j * G.cols() + col) = temp(row, col);
+                        //MoG.block(i * G.rows(), j * G.cols(), G.rows(), G.cols()) = M.coeff(i, j) * G;
+                    }
+                }
+            }
+        }
+    }
+    //cout << M << endl;
+    //MoG = kroneckerProduct(M, G);
+    //cout << MoG << endl;
     cout << "MoG END" <<endl;
 
     MatrixXd new_V;
