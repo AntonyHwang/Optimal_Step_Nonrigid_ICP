@@ -13,6 +13,7 @@
 #include <MatOp/SparseGenMatProd.h>
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
+#include "igl/cat.h"
 #include <unsupported/Eigen/KroneckerProduct>
 
 
@@ -275,8 +276,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
         pre_X = 10 * X;
-        cout << (X - pre_X).norm() << endl;
+
         while ((X - pre_X).norm() >= 0.0001) {
+            cout << "X Difference: " << (X - pre_X).norm() << endl;
             new_V = D * X;
             U = knnsearch(new_V, Target_V, 1);
             cout << "KNN END" << endl;
@@ -305,36 +307,47 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 //            A.col(A.rows() - WD.rows()) = WD;
 
             SparseMatrix<double> A(aMoG.rows() + WD.rows(), aMoG.cols());
-            A.reserve(aMoG.nonZeros() + WD.nonZeros());
-            cout << "Build A" << endl;
-            for(Index c = 0; c < aMoG.cols(); ++c)
-            {
-                for(SparseMatrix<double>::InnerIterator itL(aMoG, c); itL; ++itL)
-                    A.insertBack(itL.row(), c) = itL.value();
-                for(SparseMatrix<double>::InnerIterator itC(WD, c); itC; ++itC)
-                    A.insertBack(itC.row(), c) = itC.value();
-            }
-            A.finalize();
-
+//            A.reserve(aMoG.nonZeros() + WD.nonZeros());
+//            cout << "Build A" << endl;
+//            for(Index c = 0; c < aMoG.cols(); ++c)
+//            {
+//                for(SparseMatrix<double>::InnerIterator itaMoG(aMoG, c); itaMoG; ++itaMoG)
+//                    A.insertBack(itaMoG.row(), c) = itaMoG.value();
+//                for(SparseMatrix<double>::InnerIterator itWD(WD, c); itWD; ++itWD)
+//                    A.insertBack(itWD.row(), c) = itWD.value();
+//            }
+//            A.finalize();
+            A = igl::cat(2, aMoG, WD);
+            cout << "A END" << endl;
 //            B << zeros,
 //            B.conservativeResize(B.rows() + WU.rows(), B.cols());
 //            B.col(B.rows() - WU.rows()) = WU;
 
             SparseMatrix<double> B(zeros.rows() + WU.rows(), zeros.cols());
-            B.reserve(zeros.nonZeros() + WU.nonZeros());
-            cout << "Build B" << endl;
-            for(Index c = 0; c < zeros.cols(); ++c)
-            {
-                for(SparseMatrix<double>::InnerIterator itL(zeros, c); itL; ++itL)
-                    B.insertBack(itL.row(), c) = itL.value();
-                for(SparseMatrix<double>::InnerIterator itC(WU, c); itC; ++itC)
-                    B.insertBack(itC.row(), c) = itC.value();
-            }
-            B.finalize();
+//            B.reserve(zeros.nonZeros() + WU.nonZeros());
+//            cout << "Build B" << endl;
+//            for(Index c = 0; c < zeros.cols(); ++c)
+//            {
+//                for(SparseMatrix<double>::InnerIterator itL(zeros, c); itL; ++itL)
+//                    B.insertBack(itL.row(), c) = itL.value();
+//                for(SparseMatrix<double>::InnerIterator itC(WU, c); itC; ++itC)
+//                    B.insertBack(itC.row(), c) = itC.value();
+//            }
+//            B.finalize();
+
+            B = igl::cat(2, zeros, WU);
+            cout << "B END" << endl;
 
             pre_X = X;
-            cout << "AB END" << endl;
-            //X = MatrixXd(A.transpose() * A).inverse() * (A.transpose() * B);
+
+            cout << "COMPUTE X" << endl;
+//            ConjugateGradient<SparseMatrix<double>> cg;
+//            cg.compute(A);
+//            X = cg.solve(B);
+//            cout << "COMPUTE X END" << endl;
+//            cout << "X Result: " << X << endl;
+
+            X = (A.transpose() * A).inverse() * (A.transpose() * B);
         }
         cout << "while END" << endl;
     }

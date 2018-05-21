@@ -1021,13 +1021,21 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
  ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/KroneckerProduct
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/SparseExtra
  ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/KroneckerProduct/KroneckerTensorProduct.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/SparseExtra/BlockOfDynamicSparseMatrix.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/SparseExtra/DynamicSparseMatrix.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/SparseExtra/MarketIO.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/SparseExtra/MatrixMarketIterator.h
+ ../3rdparty/libigl/external/nanogui/ext/eigen/unsupported/Eigen/src/SparseExtra/RandomSetter.h
  ../3rdparty/libigl/include/igl/IndexComparison.h
  ../3rdparty/libigl/include/igl/LinSpaced.h
  ../3rdparty/libigl/include/igl/PI.h
  ../3rdparty/libigl/include/igl/SortableRow.h
  ../3rdparty/libigl/include/igl/adjacency_matrix.cpp
  ../3rdparty/libigl/include/igl/adjacency_matrix.h
+ ../3rdparty/libigl/include/igl/cat.cpp
+ ../3rdparty/libigl/include/igl/cat.h
  ../3rdparty/libigl/include/igl/colon.cpp
  ../3rdparty/libigl/include/igl/colon.h
  ../3rdparty/libigl/include/igl/doublearea.cpp

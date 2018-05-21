@@ -42,12 +42,28 @@
       <file leaf-file-name="mesh.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="310" column="13" lean-forward="true" selection-start-line="310" selection-start-column="13" selection-end-line="310" selection-end-column="13" />
+            <state relative-caret-position="634">
+              <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mesh.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/mesh.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="364" selection-start-line="364" selection-end-line="368" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cat.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3rdparty/libigl/include/igl/cat.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-400" />
           </provider>
         </entry>
       </file>
@@ -59,15 +75,6 @@
               <folding>
                 <element signature="e#31#55#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1665">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -116,6 +123,32 @@
             <path>
               <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
               <item name="IGLFramework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IGLFramework" type="462c0819:PsiDirectoryNode" />
+              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IGLFramework" type="462c0819:PsiDirectoryNode" />
+              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
+              <item name="libigl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IGLFramework" type="462c0819:PsiDirectoryNode" />
+              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
+              <item name="libigl" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IGLFramework" type="462c0819:PsiDirectoryNode" />
+              <item name="3rdparty" type="462c0819:PsiDirectoryNode" />
+              <item name="libigl" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="igl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IGLFramework" type="b2602c69:ProjectViewProjectNode" />
@@ -184,12 +217,12 @@
       <updated>1523951638130</updated>
       <workItem from="1523951641891" duration="11013000" />
       <workItem from="1526567744752" duration="19310000" />
-      <workItem from="1526730785645" duration="30163000" />
+      <workItem from="1526730785645" duration="32205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60486000" />
+    <option name="totallyTimeSpent" value="62528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -197,11 +230,11 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21428572" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.3296593" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3296593" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.3296593" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19438878" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19438878" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -301,13 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1665">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/SparseCore/SparseMatrix.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
@@ -325,16 +351,6 @@
     <entry file="file://$PROJECT_DIR$/include/mat.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-629" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/mesh.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding>
-            <element signature="e#31#55#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../UCL/BSc_Computer_Science/3rd Year/Individual Project/Code/IndividualProject/ProjectionApp/iodata.cpp">
@@ -361,10 +377,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/3rdparty/libigl/include/igl/cat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/mesh.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="e#31#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/mesh.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="364" selection-start-line="364" selection-end-line="368" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="310" column="13" lean-forward="true" selection-start-line="310" selection-start-column="13" selection-end-line="310" selection-end-column="13" />
+        <state relative-caret-position="634">
+          <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
