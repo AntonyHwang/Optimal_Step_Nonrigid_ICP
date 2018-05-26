@@ -144,14 +144,14 @@ MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
     return results;
 }
 
-SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi Fa) {
-    MatrixXi F(2,3);
-    F(0,0) = 0;
-    F(0,1) = 1;
-    F(0,2) = 3;
-    F(1,0) = 1;
-    F(1,1) = 2;
-    F(1,2) = 3;
+SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi F) {
+//    MatrixXi F(2,3);
+//    F(0,0) = 0;
+//    F(0,1) = 1;
+//    F(0,2) = 3;
+//    F(1,0) = 1;
+//    F(1,1) = 2;
+//    F(1,2) = 3;
     Eigen::SparseMatrix<double> A;
     igl::adjacency_matrix(F, A);
     //cout<<A;
@@ -197,7 +197,7 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
     //cout << "sparse_M" <<endl;
     //sparse_M = sparse_M.transpose();
     //return sparse_M;
-    cout << incidence << endl;
+    //cout << incidence << endl;
     return incidence.transpose();
 
 //    int cols = A.cols();
@@ -258,7 +258,6 @@ SparseMatrix<double> compute_D(MatrixXd V) {
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
 
     int nVert = Temp_V.rows();
-
     int nFace = Temp_F.rows();
     int gamma = 1;
     double dist_err;
