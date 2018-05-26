@@ -3103,6 +3103,8 @@ list
 -
 Eigen/Sparse
 -
+Eigen/SparseCore
+-
 SymEigsSolver.h
 -
 GenEigsSolver.h
@@ -3110,8 +3112,6 @@ GenEigsSolver.h
 MatOp/SparseGenMatProd.h
 -
 Eigen/IterativeLinearSolvers
--
-Eigen/SparseCholesky
 -
 igl/adjacency_matrix.h
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/adjacency_matrix.h

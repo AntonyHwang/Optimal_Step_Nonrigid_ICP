@@ -529,7 +529,7 @@ int main(int argc, char *argv[]) {
 //                            SparseMatrix<double> A = msh.Adjacency_Matrix(Temp_F);
 //                            SparseMatrix<double> M = msh.Incidence_Matrix(A);
                             MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F);
-                            cout << new_V;
+                            //cout << new_V;
                             //cout<< A;
                             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
                         });
