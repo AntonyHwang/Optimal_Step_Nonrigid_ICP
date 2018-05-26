@@ -183,7 +183,7 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
         }
     }
     cout << "end for" <<endl;
-    //MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
+
     Eigen::SparseMatrix<double> incidence(cols, Vector_end.size());
     cout << "end init" << Vector_end.size() << " " << count << Vector_begin.size() <<endl;
 
@@ -192,55 +192,7 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
         incidence.insert(Vector_begin[i],i) = -1;
         //cout << i <<endl;
     }
-    //cout << "end for" <<endl;
-    //SparseMatrix<double> sparse_M = incidence.sparseView();
-    //cout << "sparse_M" <<endl;
-    //sparse_M = sparse_M.transpose();
-    //return sparse_M;
-    //cout << incidence << endl;
     return incidence.transpose();
-
-//    int cols = A.cols();
-//
-//    int rows = A.rows();
-//
-//    std::vector<double> i;
-//    std::vector<double> j;
-//
-//    int count = 0;
-//    for (int row = 0; row < rows; row++){
-//        for (int col = 0; col < cols; col++) {
-//            if(A.coeff(row, col) != 0){
-//                if(row <= col) {
-//                    j.push_back(col);
-//                    i.push_back(row);
-//                    count++;
-//                }
-//            }
-//        }
-//    }
-//    cout << i.size() << endl;
-//    //MatrixXd incidence = MatrixXd::Zero(Vector_end.size(), Vector_end.size());
-//    Eigen::SparseMatrix<double> incidence(rows, count);
-//
-//    for(int row = 0; row < i.size(); row++){
-//        incidence.insert(row, i[row]) = 1;
-////        incidence.insert(row * 2, j[row]) = -1;
-//    }
-//    cout << incidence << endl;
-//    cout << "Incidence: " << incidence.rows() << ":" << incidence.cols() << endl;
-//
-//    //SparseMatrix<double> sparse_M = incidence.sparseView();
-//
-//    //sparse_M = sparse_M.transpose();
-//    //return sparse_M;
-//    A.resize(0, 0);
-//    i.resize(0);
-//    j.resize(0);
-//    cout << incidence << endl;
-//    //incidence = incidence.transpose();
-//    cout << incidence << endl;
-//    return incidence;
 }
 
 SparseMatrix<double> compute_D(MatrixXd V) {
@@ -253,6 +205,23 @@ SparseMatrix<double> compute_D(MatrixXd V) {
          D.insert(i, i * 4 + 3) = 1;
     }
     return D;
+}
+
+SparseMatrix<double> concat_rows(MatrixXd A, MatrixXd B) {
+    MatrixXd M(A.rows() + B.rows(), A.cols());
+    M << A, B;
+
+//    SparseMatrix<double> M(A.rows() + B.rows(), A.cols());
+//    M.reserve(A.nonZeros() + B.nonZeros());
+//    for(Index c = 0; c < A.rows(); ++c)
+//    {
+//        for(SparseMatrix<double>::InnerIterator itA(A, c); itA; ++itA)
+//            M.insertBack(itA.row(), c) = itA.value();
+//        for(SparseMatrix<double>::InnerIterator itB(B, c); itB; ++itB)
+//            M.insertBack(itB.row(), c) = itB.value();
+//    }
+//    M.finalize();
+    return M.sparseView();
 }
 
 MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F) {
@@ -322,6 +291,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
+        cout << "Alpha:" << endl;
+        cout << curr_alpha << endl;
         pre_X = 10 * X;
 
         while ((X - pre_X).norm() >= 0.0001) {
@@ -333,83 +304,52 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             cout << "Built WD" << endl;
             WU = (W * U).sparseView();
             cout << "Built WU" << endl;
-            aMoG = i * MoG;
+            aMoG = curr_alpha * MoG;
             cout << "Built aMoG" << endl;
             SparseMatrix<double> zeros(aMoG.rows(), aMoG.cols());
             cout << "Matrices Built" << endl;
 
-//            A << aMoG;
-//            A.conservativeResize(A.rows() + WD.rows(), A.cols());
-//            A.col(A.rows() - WD.rows()) = WD;
-
             SparseMatrix<double> A(aMoG.rows() + WD.rows(), aMoG.cols());
-//            A.reserve(aMoG.nonZeros() + WD.nonZeros());
-//            cout << "Build A" << endl;
-//            for(Index c = 0; c < aMoG.cols(); ++c)
-//            {
-//                for(SparseMatrix<double>::InnerIterator itaMoG(aMoG, c); itaMoG; ++itaMoG)
-//                    A.insertBack(itaMoG.row(), c) = itaMoG.value();
-//                for(SparseMatrix<double>::InnerIterator itWD(WD, c); itWD; ++itWD)
-//                    A.insertBack(itWD.row(), c) = itWD.value();
-//            }
-//            A.finalize();
-            A = igl::cat(2, aMoG, WD);
 
-//            B << zeros,
-//            B.conservativeResize(B.rows() + WU.rows(), B.cols());
-//            B.col(B.rows() - WU.rows()) = WU;
+            A = concat_rows(aMoG, WD);
 
             SparseMatrix<double> B(zeros.rows() + WU.rows(), zeros.cols());
-//            B.reserve(zeros.nonZeros() + WU.nonZeros());
-//            cout << "Build B" << endl;
-//            for(Index c = 0; c < zeros.cols(); ++c)
-//            {
-//                for(SparseMatrix<double>::InnerIterator itL(zeros, c); itL; ++itL)
-//                    B.insertBack(itL.row(), c) = itL.value();
-//                for(SparseMatrix<double>::InnerIterator itC(WU, c); itC; ++itC)
-//                    B.insertBack(itC.row(), c) = itC.value();
-//            }
-//            B.finalize();
 
-            B = igl::cat(2, zeros, WU);
-
+            B = concat_rows(zeros, WU);
 
             pre_X = X;
 
-            cout << "COMPUTE X" << endl;
-//            ConjugateGradient<SparseMatrix<double>> cg;
-//            cg.compute(A);
-//            X = cg.solve(B);
-//            cout << "COMPUTE X END" << endl;
-//            cout << "X Result: " << X << endl;
-            cout << "W size:" << endl;
-            cout << W.rows() << endl;
-            cout << W.cols() << endl;
-            cout << "D size:" << endl;
-            cout << D.rows() << endl;
-            cout << D.cols() << endl;
-            cout << "WD size:" << endl;
-            cout << WD.rows() << endl;
-            cout << WD.cols() << endl;
+
             cout << "A size:" << endl;
             cout << A.rows() << endl;
             cout << A.cols() << endl;
             cout << "B size:" << endl;
             cout << B.rows() << endl;
             cout << B.cols() << endl;
-            cout << "MOG size:" << endl;
-            cout << aMoG.rows() << endl;
-            cout << aMoG.cols() << endl;
 
             SparseMatrix<double> ATA  = A.transpose() * A;
             SparseMatrix<double> ATB = A.transpose() * B;
             ATA.template triangularView<Lower>().solveInPlace(ATB);
 
-            //X = (A' * A) \ (A' * B);
-//            MatrixXd A_d = MatrixXd(A);
-//            MatrixXd B_d = MatrixXd(B);
-
             X = ATA;
+
+            cout << "COMPUTE X" << endl;
+
+//            cout << "W size:" << endl;
+//            cout << W.rows() << endl;
+//            cout << W.cols() << endl;
+//            cout << "D size:" << endl;
+//            cout << D.rows() << endl;
+//            cout << D.cols() << endl;
+//            cout << "WD size:" << endl;
+//            cout << WD.rows() << endl;
+//            cout << WD.cols() << endl;
+//            cout << "B size:" << endl;
+//            cout << B.rows() << endl;
+//            cout << B.cols() << endl;
+//            cout << "MOG size:" << endl;
+//            cout << aMoG.rows() << endl;
+//            cout << aMoG.cols() << endl;
         }
         A.resize(0,0);
         M.resize(0,0);
