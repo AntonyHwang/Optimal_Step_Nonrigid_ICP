@@ -306,7 +306,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
             cout << "Built WU" << endl;
             aMoG = curr_alpha * MoG;
             cout << "Built aMoG" << endl;
-            SparseMatrix<double> zeros(aMoG.rows(), aMoG.cols());
+            SparseMatrix<double> zeros(M.rows() * G.rows(), 3);
             cout << "Matrices Built" << endl;
 
             SparseMatrix<double> A(aMoG.rows() + WD.rows(), aMoG.cols());
@@ -335,9 +335,12 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
             cout << "COMPUTE X" << endl;
 
-//            cout << "W size:" << endl;
-//            cout << W.rows() << endl;
-//            cout << W.cols() << endl;
+            cout << "W size:" << endl;
+            cout << W.rows() << endl;
+            cout << W.cols() << endl;
+            cout << "U size:" << endl;
+            cout << U.rows() << endl;
+            cout << U.cols() << endl;
 //            cout << "D size:" << endl;
 //            cout << D.rows() << endl;
 //            cout << D.cols() << endl;
