@@ -237,7 +237,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     G.diagonal() << 1, 1, 1, 1;
     VectorXd WVec = VectorXd::Ones(nVert);
     MatrixXd W = WVec.asDiagonal();
-    MatrixXd X(3, 4);
+    MatrixXd init_trans(4, 3);
+    MatrixXd X(4 * nVert, 3);
     VectorXd alpha = VectorXd::LinSpaced(20, 100, 10);
     int nAlpha = alpha.rows();
 
@@ -248,8 +249,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     SparseMatrix<double> aMoG;
 
     R = MatrixXd::Identity(3, 3);
-    t = MatrixXd::Zero(3, 1);
-    X << R, t;
+    t = MatrixXd::Zero(1, 3);
+    init_trans << R, t;
+    X = init_trans.replicate(nVert, 1);
 
     D = compute_D(Temp_V);
 
@@ -294,11 +296,12 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         cout << "Alpha:" << endl;
         cout << curr_alpha << endl;
         pre_X = 10 * X;
+        //cout << pre_X << endl;
 
-        while ((X - pre_X).norm() >= 0.0001) {
-            cout << "X Difference: " << (X - pre_X).norm() << endl;
+        while ((X - pre_X).lpNorm<Infinity>() >= 0.0001) {
+            cout << "X Difference: " << (X - pre_X).lpNorm<Infinity>() << endl;
             new_V = D * X;
-            U = knnsearch(new_V, Target_V, 1);
+            U = knnsearch(Target_V, new_V, 1);
 
             WD = (W * D).sparseView();
             cout << "Built WD" << endl;
@@ -313,7 +316,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
             A = concat_rows(aMoG, WD);
 
-            SparseMatrix<double> B(zeros.rows() + WU.rows(), zeros.cols());
+            SparseMatrix<double> B(zeros.rows() + WU.rows(), 3);
 
             B = concat_rows(zeros, WU);
 
