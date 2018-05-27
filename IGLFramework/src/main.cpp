@@ -532,6 +532,11 @@ int main(int argc, char *argv[]) {
                             //cout << new_V;
                             //cout<< A;
                             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
+                            cloudManager.setCloud(acq::DecoratedCloud(new_V, Temp_F),0);
+
+                            viewer.data.clear();
+                            // Show mesh
+                            viewer.data.set_mesh(cloudManager.getCloud(0).getVertices(),cloudManager.getCloud(0).getFaces());
                         });
 
 

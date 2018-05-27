@@ -3121,6 +3121,8 @@ igl/cat.h
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/cat.h
 Eigen/LU
 -
+Eigen/SparseCholesky
+-
 unsupported/Eigen/KroneckerProduct
 -
 

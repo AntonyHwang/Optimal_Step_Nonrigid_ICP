@@ -30,8 +30,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="531" column="30" selection-start-line="531" selection-start-column="30" selection-end-line="531" selection-end-column="30" />
+            <state relative-caret-position="534">
+              <caret line="534" column="88" lean-forward="true" selection-start-line="534" selection-start-column="88" selection-end-line="534" selection-end-column="88" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -39,11 +39,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="404" selection-start-line="404" selection-end-line="408" selection-end-column="117" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mesh.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="336" column="53" lean-forward="true" selection-start-line="336" selection-start-column="53" selection-end-line="336" selection-end-column="53" />
+            <state relative-caret-position="244">
+              <caret line="350" column="30" lean-forward="true" selection-start-line="350" selection-start-column="30" selection-end-line="350" selection-end-column="30" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -63,7 +72,7 @@
       <file leaf-file-name="Memory.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/core/util/Memory.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
+            <state relative-caret-position="697">
               <caret line="158" selection-start-line="158" selection-end-line="158" />
             </state>
           </provider>
@@ -87,6 +96,7 @@
     <findStrings>
       <find>.rows</find>
       <find>sampl</find>
+      <find>zeros</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -95,8 +105,8 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/mesh.h" />
         <option value="$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/main.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/mesh.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
       </list>
     </option>
   </component>
@@ -196,12 +206,12 @@
       <workItem from="1527331973334" duration="2000" />
       <workItem from="1527331978329" duration="1298000" />
       <workItem from="1527339995792" duration="4000" />
-      <workItem from="1527340002655" duration="15569000" />
+      <workItem from="1527340002655" duration="17145000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90435000" />
+    <option name="totallyTimeSpent" value="92011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -617,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="114" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="569">
@@ -635,23 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="891">
           <caret line="364" selection-start-line="364" selection-end-line="368" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/mesh.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding>
-            <element signature="e#31#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/core/util/Memory.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2370">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
         </state>
       </provider>
     </entry>
@@ -667,10 +653,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/mesh.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="e#31#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/core/util/Memory.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../CW2/compM080-compGV18/iglframework/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="404" selection-start-line="404" selection-end-line="408" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="531" column="30" selection-start-line="531" selection-start-column="30" selection-end-line="531" selection-end-column="30" />
+        <state relative-caret-position="534">
+          <caret line="534" column="88" lean-forward="true" selection-start-line="534" selection-start-column="88" selection-end-line="534" selection-end-column="88" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -679,8 +689,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="336" column="53" lean-forward="true" selection-start-line="336" selection-start-column="53" selection-end-line="336" selection-end-column="53" />
+        <state relative-caret-position="244">
+          <caret line="350" column="30" lean-forward="true" selection-start-line="350" selection-start-column="30" selection-end-line="350" selection-end-column="30" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>

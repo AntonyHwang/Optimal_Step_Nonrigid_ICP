@@ -17,6 +17,7 @@
 #include "igl/adjacency_matrix.h"
 #include "igl/cat.h"
 #include <Eigen/LU>
+#include<Eigen/SparseCholesky>
 #include <unsupported/Eigen/KroneckerProduct>
 
 
@@ -299,9 +300,8 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         cout << curr_alpha << endl;
         pre_X = 10 * X;
         //cout << pre_X << endl;
-
+        int iter = 0;
         while ((X - pre_X).norm() >= 0.0001) {
-            cout << "X Difference: " << (X - pre_X).norm() << endl;
             new_V = D * X;
             U = knnsearch(Target_V, new_V, 1);
 
@@ -324,20 +324,13 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
             pre_X = X;
 
+            SparseMatrix<double> ATA = A.transpose() * A;
+            SparseMatrix<double> ATB = A.transpose() * B;
+            SimplicialLLT<SparseMatrix<double> > solver;
 
-            cout << "A size:" << endl;
-            cout << A.rows() << endl;
-            cout << A.cols() << endl;
-            cout << "B size:" << endl;
-            cout << B.rows() << endl;
-            cout << B.cols() << endl;
+            solver.compute(ATA);
 
-            MatrixXd ATA = A.transpose() * A;
-            MatrixXd ATB = A.transpose() * B;
-            X = ATA.colPivHouseholderQr().solve(ATB);
-            //cout << X.row(0) << endl;
-
-            //X = ATA;
+            X = solver.solve(ATB);
 
 //            cout << "COMPUTE X" << endl;
 //
@@ -360,9 +353,9 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 //            cout << aMoG.rows() << endl;
 //            cout << aMoG.cols() << endl;
         }
-        A.resize(0,0);
-        M.resize(0,0);
-        G.resize(0,0);
+//        A.resize(0,0);
+//        M.resize(0,0);
+//        G.resize(0,0);
 //        cout << "X size:" << endl;
 //        cout << X.rows() << endl;
 //        cout << X.cols() << endl;
