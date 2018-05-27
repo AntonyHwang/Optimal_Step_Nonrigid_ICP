@@ -20,7 +20,7 @@ class mesh {
     SparseMatrix<double> Incidence_Matrix(SparseMatrix<double> A);
     MatrixXd Add_noise(MatrixXd m, double noise_val);
     pair<MatrixXd, MatrixXd> rotate(MatrixXd, double x, double y, double z);
-    MatrixXd non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F);
+    MatrixXd non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V, MatrixXi Target_F, int method);
 };
 #endif
 

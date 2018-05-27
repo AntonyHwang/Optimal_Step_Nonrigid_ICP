@@ -528,18 +528,40 @@ int main(int argc, char *argv[]) {
                             MatrixXd Target_V = cloud2.getVertices();
 //                            SparseMatrix<double> A = msh.Adjacency_Matrix(Temp_F);
 //                            SparseMatrix<double> M = msh.Incidence_Matrix(A);
-                            MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F);
-                            cout << new_V.row(0) << endl;
-                            cout << new_V.row(100) << endl;
-                            cout << new_V.row(200) << endl;
+                            double t_start;
+                            double time;
+                            t_start = clock();
+                            MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F, 0);
+                            time = (clock() - t_start) * 1.0 / CLOCKS_PER_SEC;
+                            cout << "Processing Time: " << time << " s" << endl;
+
+                            int total_V = new_V.rows() + Target_V.rows();
+                            Eigen::MatrixXd disp_V;
+                            disp_V.resize(total_V, 3);
+                            disp_V << new_V, Target_V;
+
+                            Eigen::MatrixXi disp_F;
+                            int total_F = Temp_F.rows() + Target_F.rows();
+                            disp_F.resize(total_F, Temp_F.cols());
+                            disp_F << Temp_F,(Target_F.array() + new_V.rows());
+
+                            Eigen::MatrixXd Color(disp_F.rows(), 3);
+
+                            RowVector3d m1_color(0, 0, 1);
+                            RowVector3d m2_color(1, 0, 0);
+                            Color << m1_color.replicate(Temp_F.rows(),1),
+                                     m2_color.replicate(Target_F.rows(),1);
+                            //cout << new_V.col(0) << endl;
                             //cout << new_V;
                             //cout<< A;
                             //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
-                            cloudManager.setCloud(acq::DecoratedCloud(new_V, Temp_F),0);
+                            cloudManager.setCloud(acq::DecoratedCloud(disp_V, disp_F),0);
+//                            cloudManager.setCloud(acq::DecoratedCloud(Target_V, Target_F),0);
 
                             viewer.data.clear();
                             // Show mesh
-                            viewer.data.set_mesh(cloudManager.getCloud(0).getVertices(),cloudManager.getCloud(0).getFaces());
+                            viewer.data.set_mesh(disp_V, disp_F);
+                            viewer.data.set_colors(Color);
                         });
 
 

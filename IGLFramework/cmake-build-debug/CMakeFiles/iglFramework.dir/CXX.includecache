@@ -3129,6 +3129,8 @@ Eigen/IterativeLinearSolvers
 -
 igl/adjacency_matrix.h
 /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/igl/adjacency_matrix.h
+Eigen/SparseLU
+-
 igl/cat.h
 /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/igl/cat.h
 Eigen/LU

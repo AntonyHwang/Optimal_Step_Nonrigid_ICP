@@ -2918,6 +2918,18 @@ Eigen/Core
 Eigen/Core
 -
 
+../include/MatOp/SparseCholesky.h
+Eigen/Core
+-
+Eigen/SparseCore
+-
+Eigen/SparseCholesky
+-
+stdexcept
+-
+Util/CompInfo.h
+-
+
 ../include/MatOp/SparseGenMatProd.h
 Eigen/Core
 -
@@ -3117,12 +3129,16 @@ Eigen/IterativeLinearSolvers
 -
 igl/adjacency_matrix.h
 /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/igl/adjacency_matrix.h
+Eigen/SparseLU
+-
 igl/cat.h
 /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/igl/cat.h
 Eigen/LU
 -
 Eigen/SparseCholesky
 -
+MatOp/SparseCholesky.h
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/MatOp/SparseCholesky.h
 unsupported/Eigen/KroneckerProduct
 -
 
