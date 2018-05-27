@@ -3103,6 +3103,8 @@ list
 -
 Eigen/Sparse
 -
+Eigen/Dense
+-
 Eigen/SparseCore
 -
 SymEigsSolver.h
@@ -3117,6 +3119,8 @@ igl/adjacency_matrix.h
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/adjacency_matrix.h
 igl/cat.h
 /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/igl/cat.h
+Eigen/LU
+-
 unsupported/Eigen/KroneckerProduct
 -
 
