@@ -6,5 +6,5 @@ C_FLAGS =  -Wno-deprecated-declarations -O2 -g -DNDEBUG -fPIC   -Wall -Wno-depre
 
 C_DEFINES = -DIGL_VIEWER_WITH_NANOGUI -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/include -I/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/include -I/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/src -I/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src 
+C_INCLUDES = -I/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/include -I/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/include -I/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/src -I/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src 
 

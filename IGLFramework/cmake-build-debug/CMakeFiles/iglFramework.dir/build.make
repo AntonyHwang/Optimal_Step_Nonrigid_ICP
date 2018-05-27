@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework
+CMAKE_SOURCE_DIR = /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/iglFramework.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/iglFramework.dir/flags.make
 
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o: CMakeFiles/iglFramework.dir/flags.make
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o: ../src/normalEstimation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o -c /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o -c /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/normalEstimation.cpp
 
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp > CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/normalEstimation.cpp > CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.i
 
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp -o CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/normalEstimation.cpp -o CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.s
 
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o: CMakeFiles/iglFramework.dir/flags.make
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o: ../src/decoratedCloud.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o -c /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/decoratedCloud.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o -c /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/decoratedCloud.cpp
 
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/decoratedCloud.cpp > CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/decoratedCloud.cpp > CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.i
 
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/decoratedCloud.cpp -o CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/decoratedCloud.cpp -o CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.s
 
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o: CMakeFiles/iglFramework.dir/flags.make
 CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o: ../src/cloudManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o -c /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/cloudManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o -c /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/cloudManager.cpp
 
 CMakeFiles/iglFramework.dir/src/cloudManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iglFramework.dir/src/cloudManager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/cloudManager.cpp > CMakeFiles/iglFramework.dir/src/cloudManager.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/cloudManager.cpp > CMakeFiles/iglFramework.dir/src/cloudManager.cpp.i
 
 CMakeFiles/iglFramework.dir/src/cloudManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iglFramework.dir/src/cloudManager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/cloudManager.cpp -o CMakeFiles/iglFramework.dir/src/cloudManager.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/cloudManager.cpp -o CMakeFiles/iglFramework.dir/src/cloudManager.cpp.s
 
 CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o.provides.build: CMakeFiles/ig
 
 CMakeFiles/iglFramework.dir/src/main.cpp.o: CMakeFiles/iglFramework.dir/flags.make
 CMakeFiles/iglFramework.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/iglFramework.dir/src/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/main.cpp.o -c /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/iglFramework.dir/src/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/main.cpp.o -c /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/main.cpp
 
 CMakeFiles/iglFramework.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iglFramework.dir/src/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/main.cpp > CMakeFiles/iglFramework.dir/src/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/main.cpp > CMakeFiles/iglFramework.dir/src/main.cpp.i
 
 CMakeFiles/iglFramework.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iglFramework.dir/src/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/main.cpp -o CMakeFiles/iglFramework.dir/src/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/main.cpp -o CMakeFiles/iglFramework.dir/src/main.cpp.s
 
 CMakeFiles/iglFramework.dir/src/main.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/iglFramework.dir/src/main.cpp.o.provides.build: CMakeFiles/iglFramewo
 
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: CMakeFiles/iglFramework.dir/flags.make
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../src/mesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/iglFramework.dir/src/mesh.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/mesh.cpp.o -c /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/iglFramework.dir/src/mesh.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iglFramework.dir/src/mesh.cpp.o -c /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/mesh.cpp
 
 CMakeFiles/iglFramework.dir/src/mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iglFramework.dir/src/mesh.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/mesh.cpp > CMakeFiles/iglFramework.dir/src/mesh.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/mesh.cpp > CMakeFiles/iglFramework.dir/src/mesh.cpp.i
 
 CMakeFiles/iglFramework.dir/src/mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iglFramework.dir/src/mesh.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/mesh.cpp -o CMakeFiles/iglFramework.dir/src/mesh.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/mesh.cpp -o CMakeFiles/iglFramework.dir/src/mesh.cpp.s
 
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o.requires:
 
@@ -197,7 +197,7 @@ iglFramework: CMakeFiles/iglFramework.dir/build.make
 iglFramework: 3rdparty/libigl/external/nanogui/libnanogui.dylib
 iglFramework: /usr/local/lib/libGLEW.dylib
 iglFramework: CMakeFiles/iglFramework.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable iglFramework"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable iglFramework"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iglFramework.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -218,6 +218,6 @@ CMakeFiles/iglFramework.dir/clean:
 .PHONY : CMakeFiles/iglFramework.dir/clean
 
 CMakeFiles/iglFramework.dir/depend:
-	cd /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles/iglFramework.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles/iglFramework.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/iglFramework.dir/depend
 

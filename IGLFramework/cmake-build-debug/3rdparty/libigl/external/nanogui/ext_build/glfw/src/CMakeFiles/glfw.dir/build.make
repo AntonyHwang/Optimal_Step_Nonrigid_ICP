@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework
+CMAKE_SOURCE_DIR = /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend.make
@@ -62,19 +62,19 @@ glfw_OBJECTS =
 
 # External object files for target glfw
 glfw_EXTERNAL_OBJECTS = \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/monitor.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/vulkan.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/window.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_init.m.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_joystick.m.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_monitor.m.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_time.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/posix_tls.c.o" \
-"/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o"
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/monitor.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/vulkan.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/window.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_init.m.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_joystick.m.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_monitor.m.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_time.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/posix_tls.c.o" \
+"/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o"
 
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o
@@ -91,9 +91,9 @@ glfw_EXTERNAL_OBJECTS = \
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/build.make
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C shared library libglfw.dylib"
-	cd /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
-	cd /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_symlink_library libglfw.3.2.dylib libglfw.3.dylib libglfw.dylib
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C shared library libglfw.dylib"
+	cd /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -E cmake_symlink_library libglfw.3.2.dylib libglfw.3.dylib libglfw.dylib
 
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.dylib: 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.2.dylib
 	@$(CMAKE_COMMAND) -E touch_nocreate 3rdparty/libigl/external/nanogui/ext_build/glfw/src/libglfw.3.dylib
@@ -111,10 +111,10 @@ glfw_EXTERNAL_OBJECTS = \
 .PHONY : 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/requires
 
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/clean:
-	cd /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
+	cd /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
 .PHONY : 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/clean
 
 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend:
-	cd /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/src /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/ext/glfw/src /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : 3rdparty/libigl/external/nanogui/ext_build/glfw/src/CMakeFiles/glfw.dir/depend
 

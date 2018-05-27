@@ -1302,7 +1302,7 @@ vector
 nanogui/widget.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/button.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/button.cpp
 nanogui/button.h
 -
 nanogui/theme.h
@@ -1312,7 +1312,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/checkbox.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/checkbox.cpp
 nanogui/checkbox.h
 -
 nanogui/opengl.h
@@ -1322,7 +1322,7 @@ nanogui/theme.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/colorpicker.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/colorpicker.cpp
 nanogui/colorpicker.h
 -
 nanogui/layout.h
@@ -1330,7 +1330,7 @@ nanogui/layout.h
 nanogui/colorwheel.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/colorwheel.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/colorwheel.cpp
 nanogui/colorwheel.h
 -
 nanogui/theme.h
@@ -1344,7 +1344,7 @@ Eigen/QR
 Eigen/Geometry
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/combobox.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/combobox.cpp
 nanogui/combobox.h
 -
 nanogui/layout.h
@@ -1354,7 +1354,7 @@ nanogui/serializer/core.h
 cassert
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/common.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/common.cpp
 nanogui/screen.h
 -
 windows.h
@@ -1376,13 +1376,13 @@ signal.h
 sys/dir.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/darwin.mm
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/darwin.mm
 nanogui/nanogui.h
 -
 Cocoa/Cocoa.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/glcanvas.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/glcanvas.cpp
 nanogui/window.h
 -
 nanogui/screen.h
@@ -1396,7 +1396,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/glutil.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/glutil.cpp
 nanogui/glutil.h
 -
 iostream
@@ -1406,7 +1406,7 @@ fstream
 Eigen/Geometry
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/graph.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/graph.cpp
 nanogui/graph.h
 -
 nanogui/theme.h
@@ -1416,13 +1416,13 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/imagepanel.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/imagepanel.cpp
 nanogui/imagepanel.h
 -
 nanogui/opengl.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/imageview.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/imageview.cpp
 nanogui/imageview.h
 -
 nanogui/window.h
@@ -1434,7 +1434,7 @@ nanogui/theme.h
 cmath
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/label.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/label.cpp
 nanogui/label.h
 -
 nanogui/theme.h
@@ -1444,7 +1444,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/layout.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/layout.cpp
 nanogui/layout.h
 -
 nanogui/widget.h
@@ -1458,7 +1458,7 @@ nanogui/label.h
 numeric
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/messagedialog.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/messagedialog.cpp
 nanogui/messagedialog.h
 -
 nanogui/layout.h
@@ -1468,7 +1468,7 @@ nanogui/button.h
 nanogui/label.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/popup.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/popup.cpp
 nanogui/popup.h
 -
 nanogui/theme.h
@@ -1478,7 +1478,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/popupbutton.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/popupbutton.cpp
 nanogui/popupbutton.h
 -
 nanogui/theme.h
@@ -1488,7 +1488,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/progressbar.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/progressbar.cpp
 nanogui/progressbar.h
 -
 nanogui/opengl.h
@@ -1496,7 +1496,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/screen.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/screen.cpp
 nanogui/screen.h
 -
 nanogui/theme.h
@@ -1518,13 +1518,13 @@ GLFW/glfw3native.h
 nanovg_gl.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/serializer.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/serializer.cpp
 nanogui/serializer/core.h
 -
 iostream
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/slider.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/slider.cpp
 nanogui/slider.h
 -
 nanogui/theme.h
@@ -1534,11 +1534,11 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/stackedwidget.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/stackedwidget.cpp
 nanogui/stackedwidget.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/tabheader.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/tabheader.cpp
 nanogui/tabheader.h
 -
 nanogui/theme.h
@@ -1548,7 +1548,7 @@ nanogui/opengl.h
 numeric
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/tabwidget.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/tabwidget.cpp
 nanogui/tabwidget.h
 -
 nanogui/tabheader.h
@@ -1566,7 +1566,7 @@ nanogui/screen.h
 algorithm
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/textbox.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/textbox.cpp
 nanogui/window.h
 -
 nanogui/screen.h
@@ -1584,7 +1584,7 @@ regex
 iostream
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/theme.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/theme.cpp
 nanogui/theme.h
 -
 nanogui/opengl.h
@@ -1594,7 +1594,7 @@ nanogui/entypo.h
 nanogui_resources.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/vscrollpanel.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/vscrollpanel.cpp
 nanogui/vscrollpanel.h
 -
 nanogui/theme.h
@@ -1604,7 +1604,7 @@ nanogui/opengl.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/widget.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/widget.cpp
 nanogui/widget.h
 -
 nanogui/layout.h
@@ -1620,7 +1620,7 @@ nanogui/screen.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/3rdparty/libigl/external/nanogui/src/window.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/3rdparty/libigl/external/nanogui/src/window.cpp
 nanogui/window.h
 -
 nanogui/theme.h
@@ -1634,7 +1634,7 @@ nanogui/layout.h
 nanogui/serializer/core.h
 -
 
-/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/nanogui_resources.cpp
+/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/nanogui_resources.cpp
 stdint.h
 -
 

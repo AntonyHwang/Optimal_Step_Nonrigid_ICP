@@ -1,4 +1,4 @@
-# Install script for directory: /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework
+# Install script for directory: /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/cmake_install.cmake")
+  include("/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/3rdparty/libigl/external/nanogui/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

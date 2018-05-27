@@ -1071,6 +1071,7 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/LinAlg/UpperHessenbergEig
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/LinAlg/UpperHessenbergQR.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/MatOp/DenseGenMatProd.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/MatOp/DenseSymMatProd.h
+CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/MatOp/SparseCholesky.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/MatOp/SparseGenMatProd.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/SymEigsSolver.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o: ../include/Util/CompInfo.h

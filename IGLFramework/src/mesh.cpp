@@ -15,9 +15,12 @@
 #include <MatOp/SparseGenMatProd.h>
 #include <Eigen/IterativeLinearSolvers>
 #include "igl/adjacency_matrix.h"
+
+
 #include "igl/cat.h"
 #include <Eigen/LU>
-#include<Eigen/SparseCholesky>
+#include <Eigen/SparseCholesky>
+#include "MatOp/SparseCholesky.h"
 #include <unsupported/Eigen/KroneckerProduct>
 
 
@@ -202,10 +205,10 @@ SparseMatrix<double> compute_D(MatrixXd V) {
     int nVert = V.rows();
     SparseMatrix<double> D(nVert, nVert * 4);
     for (int i = 0; i < nVert; i++) {
-         D.insert(i, i * 4) = V(i, 0);
-         D.insert(i, i * 4 + 1) = V(i, 1);
-         D.insert(i, i * 4 + 2) = V(i, 2);
-         D.insert(i, i * 4 + 3) = 1;
+        D.insert(i, i * 4) = V(i, 0);
+        D.insert(i, i * 4 + 1) = V(i, 1);
+        D.insert(i, i * 4 + 2) = V(i, 2);
+        D.insert(i, i * 4 + 3) = 1;
     }
     return D;
 }
@@ -263,56 +266,72 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     SparseMatrix<double> M = Incidence_Matrix(A);
     A.resize(0, 0);
 
-    cout << "M size:" << endl;
-    cout << M.rows() << endl;
-    cout << M.cols() << endl;
-
-    cout << "G size:" << endl;
-    cout << G.rows() << endl;
-    cout << G.cols() << endl;
+//    cout << "G size:" << endl;
+//    cout << G.rows() << endl;
+//    cout << G.cols() << endl;
+//    cout << G << endl;
 
     SparseMatrix<double> MoG(G.rows() * M.rows(), G.cols() * M.cols());
     MatrixXd temp;
 
-    for (int i = 0; i < M.rows(); i++)
-    {
-        for (int j = 0; j < M.cols(); j++)
-        {
-            temp = M.coeff(i, j) * G;
-            if (temp.norm() != 0) {
-                for (int row; row < temp.rows(); row++) {
-                    for (int col; col < temp.cols(); col++) {
-                        MoG.insert(i * G.rows() + row, j * G.cols() + col) = temp(row, col);
-                    }
-                }
-            }
-        }
-    }
+//    for (int i = 0; i < M.rows(); i++)
+//    {
+//        for (int j = 0; j < M.cols(); j++)
+//        {
+//            temp = M.coeff(i, j) * G;
+//            if (temp.norm() != 0) {
+//                for (int row; row < temp.rows(); row++) {
+//                    for (int col; col < temp.cols(); col++) {
+//                        MoG.insert(i * G.rows() + row, j * G.cols() + col) = temp(row, col);
+//                    }
+//                }
+//            }
+//        }
+//    }
     //cout << M << endl;
-    //MoG = kroneckerProduct(M, G);
+    MoG.setZero();
+    MoG = kroneckerProduct(M, G);
     //cout << MoG << endl;
+//    cout << "MOG size:" << endl;
+//            cout << MoG.rows() << endl;
+//            cout << MoG.cols() << endl;
+//    cout << "MoG" << endl;
+//    cout << MoG.coeff(27011, 9063) << endl;
+//    cout << MoG.coeff(27007, 9062) << endl;
+//    cout << MoG.coeff(27003, 9063) << endl;
+//    cout << MoG.coeff(27004, 9062) << endl;
+//    cout << MoG.coeff(26995, 9063) << endl;
+//    cout << MoG.coeff(27006, 9062) << endl;
+//    cout << MoG.nonZeros() << endl;
 
     MatrixXd new_V;
 
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
         cout << "Alpha:" << endl;
+        cout << endl;
         cout << curr_alpha << endl;
         pre_X = 10 * X;
         //cout << pre_X << endl;
+
         int iter = 0;
-        while ((X - pre_X).norm() >= 0.0001) {
+        while ((X - pre_X).norm() >= 0.1) {
+            cout << "X Difference: " << (X - pre_X).norm() << endl;
+            cout << endl;
             new_V = D * X;
-            U = knnsearch(Target_V, new_V, 1);
+            U = knnsearch(new_V, Target_V, 1);
+            cout << new_V(0, 0) << endl;
+            cout << new_V(100, 0) << endl;
 
             WD = (W * D).sparseView();
-            cout << "Built WD" << endl;
+//            cout << "Built WD" << endl;
             WU = (W * U).sparseView();
-            cout << "Built WU" << endl;
+//            cout << "Built WU" << endl;
+
             aMoG = curr_alpha * MoG;
-            cout << "Built aMoG" << endl;
+//            cout << "Built aMoG" << endl;
             SparseMatrix<double> zeros(M.rows() * G.rows(), 3);
-            cout << "Matrices Built" << endl;
+//            cout << "Matrices Built" << endl;
 
             SparseMatrix<double> A(aMoG.rows() + WD.rows(), aMoG.cols());
 
@@ -326,57 +345,29 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
             SparseMatrix<double> ATA = A.transpose() * A;
             SparseMatrix<double> ATB = A.transpose() * B;
+
+//            cout << "ATB:" << endl;
+//            cout << ATB.coeff(0, 0) << endl;
             SimplicialLLT<SparseMatrix<double> > solver;
 
             solver.compute(ATA);
-
-            X = solver.solve(ATB);
-
-//            cout << "COMPUTE X" << endl;
-//
-//            cout << "W size:" << endl;
-//            cout << W.rows() << endl;
-//            cout << W.cols() << endl;
-//            cout << "U size:" << endl;
-//            cout << U.rows() << endl;
-//            cout << U.cols() << endl;
-//            cout << "D size:" << endl;
-//            cout << D.rows() << endl;
-//            cout << D.cols() << endl;
-//            cout << "WD size:" << endl;
-//            cout << WD.rows() << endl;
-//            cout << WD.cols() << endl;
-//            cout << "B size:" << endl;
-//            cout << B.rows() << endl;
-//            cout << B.cols() << endl;
-//            cout << "MOG size:" << endl;
-//            cout << aMoG.rows() << endl;
-//            cout << aMoG.cols() << endl;
+            SparseMatrix<double> sx = solver.solve(ATB);
+            X = MatrixXd(sx);
         }
-//        A.resize(0,0);
-//        M.resize(0,0);
-//        G.resize(0,0);
-//        cout << "X size:" << endl;
-//        cout << X.rows() << endl;
-//        cout << X.cols() << endl;
     }
-    cout << "X rows:" << endl;
-    cout << X.rows() << endl;
-    cout << "X cols:" << endl;
-    cout << X.cols() << endl;
+//    cout << "X rows:" << endl;
+//    cout << X.rows() << endl;
+//    cout << "X cols:" << endl;
+//    cout << X.cols() << endl;
     new_V = D * X;
-    cout << "V rows:" << endl;
-    cout << new_V.rows() << endl;
+    MatrixXd T = knnsearch(new_V, Target_V, 1);
+    new_V = T;
+
+//    targetId = knnsearch(vertsTarget, vertsTransformed);
+//    corTargets = vertsTarget(targetId,:);
+//
+//    vertsTransformed(wVec,:) = corTargets(wVec,:);
+//    cout << "V rows:" << endl;
+//    cout << new_V.rows() << endl;
     return new_V;
-
-//    MatrixXd X = zeros(3, 4 * num_V).transpose();
-//    DiagonalMatrix<double, 4> G(1, 1, 1, gamma);
-//    MatrixXd M = V;
-//    MatrixXd D = compute_D(V);
-//    MatrixXd weights = MatrixXd::ones(num_V, 1);
-//    tie(R, t, dist_err) = ICP(Target_V, Temp_V, step_size);
-//    init_T = R.transpose() << endl << t.transpose();
-//    X = init_T.replicate<num_V, 1>();
-//    MatrixXd new_V = D * X;
 }
-

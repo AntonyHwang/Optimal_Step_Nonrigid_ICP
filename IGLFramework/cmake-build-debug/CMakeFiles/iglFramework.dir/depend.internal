@@ -151,7 +151,7 @@ CMakeFiles/iglFramework.dir/src/cloudManager.cpp.o
  ../include/acq/decoratedCloud.h
  ../include/acq/impl/cloudManager.hpp
  ../include/acq/typedefs.h
- /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/cloudManager.cpp
+ /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/cloudManager.cpp
 CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Core
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/src/Core/ArithmeticSequence.h
@@ -301,7 +301,7 @@ CMakeFiles/iglFramework.dir/src/decoratedCloud.cpp.o
  ../include/acq/decoratedCloud.h
  ../include/acq/impl/decoratedCloud.hpp
  ../include/acq/typedefs.h
- /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/decoratedCloud.cpp
+ /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/decoratedCloud.cpp
 CMakeFiles/iglFramework.dir/src/main.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Cholesky
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Core
@@ -731,7 +731,7 @@ CMakeFiles/iglFramework.dir/src/main.cpp.o
  ../include/acq/normalEstimation.h
  ../include/acq/typedefs.h
  ../include/mesh.h
- /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/main.cpp
+ /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/main.cpp
  /usr/local/include/GL/glew.h
 CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Cholesky
@@ -1072,6 +1072,7 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../include/LinAlg/UpperHessenbergQR.h
  ../include/MatOp/DenseGenMatProd.h
  ../include/MatOp/DenseSymMatProd.h
+ ../include/MatOp/SparseCholesky.h
  ../include/MatOp/SparseGenMatProd.h
  ../include/SymEigsSolver.h
  ../include/Util/CompInfo.h
@@ -1082,7 +1083,7 @@ CMakeFiles/iglFramework.dir/src/mesh.cpp.o
  ../include/acq/typedefs.h
  ../include/mesh.h
  ../include/nanoflann.hpp
- /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/mesh.cpp
+ /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/mesh.cpp
 CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Cholesky
  ../3rdparty/libigl/external/nanogui/ext/eigen/Eigen/Core
@@ -1304,4 +1305,4 @@ CMakeFiles/iglFramework.dir/src/normalEstimation.cpp.o
  ../include/acq/impl/normalEstimation.hpp
  ../include/acq/normalEstimation.h
  ../include/acq/typedefs.h
- /Users/antonyhwang/Desktop/CW3/compM080-compGV18/IGLFramework/src/normalEstimation.cpp
+ /Users/antonyhwang/Desktop/Optimal_Step_Nonrigid_ICP/IGLFramework/src/normalEstimation.cpp
