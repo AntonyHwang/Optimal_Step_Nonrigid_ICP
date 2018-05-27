@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
         // Face indices, M x 3 integers referring to V.
         Eigen::MatrixXi Temp_F, Target_F;
 
-        char s_v[] = "../data/source_vertex.txt";
+        char s_v[] = "../data/source_vertex_60.txt";
         char s_f[] = "../data/source_face.txt";
         Temp_V = read_vertex_file(s_v);
         Temp_F = read_face_file(s_f);
@@ -531,7 +531,7 @@ int main(int argc, char *argv[]) {
                             double t_start;
                             double time;
                             t_start = clock();
-                            MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F, 0);
+                            MatrixXd new_V = msh.non_rigid_ICP(Temp_V, Temp_F, Target_V, Target_F, 1);
                             time = (clock() - t_start) * 1.0 / CLOCKS_PER_SEC;
                             cout << "Processing Time: " << time << " s" << endl;
 
