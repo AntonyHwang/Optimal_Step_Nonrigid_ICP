@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
         // Face indices, M x 3 integers referring to V.
         Eigen::MatrixXi Temp_F, Target_F;
 
-        char s_v[] = "../data/source_vertex_60.txt";
+        char s_v[] = "../data/report/NICP/result_100_NICP.txt";
         char s_f[] = "../data/source_face.txt";
         Temp_V = read_vertex_file(s_v);
         Temp_F = read_face_file(s_f);

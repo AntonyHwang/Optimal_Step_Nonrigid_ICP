@@ -268,7 +268,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
 
-        pre_X = 5 * X;
+        pre_X = 10 * X;
         int iter = 0;
         while ((X - pre_X).norm() >= 0.0001) {
             double t_start;
