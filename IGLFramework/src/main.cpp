@@ -124,28 +124,6 @@ int main(int argc, char *argv[]) {
     // Dummy variable to demo GUI
     float floatVariable = 0.1f;
 
-//    // Load a mesh in OFF format
-//    std::string mesh1 = "../data/face.off";
-//    std::string mesh2 = "../data/socket2.off";
-//    if (argc > 1) {
-//        mesh1 = std::string(argv[1]);
-//        if (mesh1.find(".off") == std::string::npos) {
-//            std::cerr << "Only ready for  OFF files for now...\n";
-//            return EXIT_FAILURE;
-//        }
-//    } else {
-//        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
-//    }
-//    if (argc > 1) {
-//        mesh2 = std::string(argv[1]);
-//        if (mesh2.find(".off") == std::string::npos) {
-//            std::cerr << "Only ready for  OFF files for now...\n";
-//            return EXIT_FAILURE;
-//        }
-//    } else {
-//        std::cout << "Usage: iglFrameWork <path-to-off-mesh.off>." << "\n";
-//    }
-
     // Visualize the mesh in a viewer
     igl::viewer::Viewer viewer;
     {
@@ -162,19 +140,10 @@ int main(int argc, char *argv[]) {
         // Face indices, M x 3 integers referring to V.
         Eigen::MatrixXi Temp_F, Target_F;
 
-        char s_v[] = "../data/report/NICP/result_100_NICP.txt";
+        char s_v[] = "../data/source_vertex.txt";
         char s_f[] = "../data/source_face.txt";
         Temp_V = read_vertex_file(s_v);
         Temp_F = read_face_file(s_f);
-
-//        // Read mesh1
-//        igl::readOFF(mesh1, Temp_V, Temp_F);
-//        // Check, if any vertices read
-//        if (Temp_V.rows() <= 0) {
-//            std::cerr << "Could not read mesh at " << mesh1
-//                      << "...exiting...\n";
-//            return EXIT_FAILURE;
-//        } //...if vertices read
 
         // Store read vertices and faces
         cloudManager.addCloud(acq::DecoratedCloud(Temp_V, Temp_F));
@@ -184,18 +153,8 @@ int main(int argc, char *argv[]) {
         Target_V = read_vertex_file(t_v);
         Target_F = read_face_file(t_f);
 
-//        // Read mesh1
-//        igl::readOFF(mesh2, Target_V, Target_F);
-//        // Check, if any vertices read
-//        if (Target_V.rows() <= 0) {
-//            std::cerr << "Could not read mesh at " << mesh2
-//                      << "...exiting...\n";
-//            return EXIT_FAILURE;
-//        } //...if vertices read
-
         // Store read vertices and faces
         cloudManager.addCloud(acq::DecoratedCloud(Target_V, Target_F));
-
 
         MatrixXd V(Temp_V.rows() + Target_V.rows(), Temp_V.cols());
         V << Temp_V, Target_V;
@@ -526,8 +485,7 @@ int main(int argc, char *argv[]) {
                             acq::DecoratedCloud &cloud2 = cloudManager.getCloud(2);
                             MatrixXi Target_F = cloud2.getFaces();
                             MatrixXd Target_V = cloud2.getVertices();
-//                            SparseMatrix<double> A = msh.Adjacency_Matrix(Temp_F);
-//                            SparseMatrix<double> M = msh.Incidence_Matrix(A);
+
                             double t_start;
                             double time;
                             t_start = clock();
@@ -550,11 +508,8 @@ int main(int argc, char *argv[]) {
                             RowVector3d m1_color(0, 0, 1);
                             RowVector3d m2_color(1, 0, 0);
                             Color << m1_color.replicate(Temp_F.rows(),1),
-                                     m2_color.replicate(Target_F.rows(),1);
-                            //cout << new_V.col(0) << endl;
-                            //cout << new_V;
-                            //cout<< A;
-                            //Eigen::MatrixXd i = msh.non_rigid_ICP(V, F);
+                                    m2_color.replicate(Target_F.rows(),1);
+
                             cloudManager.setCloud(acq::DecoratedCloud(disp_V, disp_F),0);
 //                            cloudManager.setCloud(acq::DecoratedCloud(Target_V, Target_F),0);
 
@@ -563,15 +518,11 @@ int main(int argc, char *argv[]) {
                             viewer.data.set_mesh(disp_V, disp_F);
                             viewer.data.set_colors(Color);
                         });
-
-
                 // Generate menu
                 viewer.screen->performLayout();
 
                 return false;
             }; //...viewer menu
-
-
     // Start viewer
     viewer.launch();
 

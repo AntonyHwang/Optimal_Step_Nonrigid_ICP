@@ -30,8 +30,8 @@
       <file leaf-file-name="mesh.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="332" selection-start-line="332" selection-end-line="332" selection-end-column="18" />
+            <state relative-caret-position="981">
+              <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -42,8 +42,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="187" column="50" lean-forward="true" selection-start-line="187" selection-start-column="50" selection-end-line="187" selection-end-column="50" />
+            <state relative-caret-position="1872">
+              <caret line="530" selection-start-line="530" selection-end-line="530" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -89,8 +89,8 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$USER_HOME$/CW2/compM080-compGV18/iglframework/src/main.cpp" />
         <option value="$PROJECT_DIR$/include/mesh.h" />
-        <option value="$PROJECT_DIR$/src/mesh.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/mesh.cpp" />
       </list>
     </option>
   </component>
@@ -193,12 +193,12 @@
       <workItem from="1527340002655" duration="17145000" />
       <workItem from="1527387768228" duration="16000" />
       <workItem from="1527387806164" duration="22976000" />
-      <workItem from="1527443290943" duration="6899000" />
+      <workItem from="1527443290943" duration="7748000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121902000" />
+    <option name="totallyTimeSpent" value="122751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -571,8 +571,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mesh.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="332" selection-start-line="332" selection-end-line="332" selection-end-column="18" />
+        <state relative-caret-position="981">
+          <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
@@ -581,8 +581,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="187" column="50" lean-forward="true" selection-start-line="187" selection-start-column="50" selection-end-line="187" selection-end-column="50" />
+        <state relative-caret-position="1872">
+          <caret line="530" selection-start-line="530" selection-end-line="530" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>

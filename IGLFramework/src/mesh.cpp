@@ -31,7 +31,7 @@ using namespace nanoflann;
 using namespace acq;
 using namespace Spectra;
 
-
+//Antony
 tuple<MatrixXd, MatrixXd, double> nearest_neighbor(MatrixXd Pv, MatrixXd Qv, int sample) {
     const size_t dim = 3;
     const size_t N_q = Qv.rows();
@@ -44,7 +44,6 @@ tuple<MatrixXd, MatrixXd, double> nearest_neighbor(MatrixXd Pv, MatrixXd Qv, int
         for (size_t d = 0; d < dim; d++)
             mat(i,d) = Qv(i,d);
 
-//	cout << mat << endl;
     const size_t num_results = 1;
     typedef KDTreeEigenMatrixAdaptor<Matrix<double, Dynamic, Dynamic> > my_kd_tree_t;
 
@@ -69,7 +68,6 @@ tuple<MatrixXd, MatrixXd, double> nearest_neighbor(MatrixXd Pv, MatrixXd Qv, int
         resultSet.init(&ret_indexes[0], &out_dists_sqr[0]);
         mat_index.index->findNeighbors(resultSet, &query_pt[0], nanoflann::SearchParams(10));
 
-//        std::cout << "knnSearch(nn=" << num_results << "): \n";
         if (out_dists_sqr[0] < 0.01) {
             int idx = ret_indexes[0];
             P.row(count) = Pv.row(i);
@@ -77,15 +75,13 @@ tuple<MatrixXd, MatrixXd, double> nearest_neighbor(MatrixXd Pv, MatrixXd Qv, int
             count ++;
             dist += out_dists_sqr[0];
         }
-//        for (size_t i = 0; i < num_results; i++)
-//            std::cout << "ret_index[" << i << "]=" << ret_indexes[i] << " out_dist_sqr=" << out_dists_sqr[i] << endl;
     }
     P = P.topRows(count);
     dist /= P.rows();
     Q = Q.topRows(count);
     return {P, Q, dist};
 }
-
+//Antony
 tuple<Matrix3d, Vector3d, double> mesh::ICP(MatrixXd Pv, MatrixXd Qv, int step_size) {
     Vector3d t;
     MatrixXd P, Q, U, V, R, A;
@@ -107,20 +103,18 @@ tuple<Matrix3d, Vector3d, double> mesh::ICP(MatrixXd Pv, MatrixXd Qv, int step_s
     return {R, t, dist};
 }
 
-
+//Ting Yi
 MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
     const size_t dim = 3;
     const size_t N_q = target.rows();
     const size_t N_p = source.rows();
     double dist = 0;
-
     Matrix<double, Dynamic, Dynamic>  mat(N_q, dim);
 
     for (size_t i = 0; i < N_q; i++)
         for (size_t d = 0; d < dim; d++)
             mat(i,d) = target(i,d);
 
-//	cout << mat << endl;
     const size_t num_results = 1;
     typedef KDTreeEigenMatrixAdaptor<Matrix<double, Dynamic, Dynamic> > my_kd_tree_t;
 
@@ -150,15 +144,15 @@ MatrixXd knnsearch(MatrixXd source, MatrixXd target, int sample) {
     }
     return results;
 }
-
+//Ting Yi
 SparseMatrix<double> mesh::Adjacency_Matrix(MatrixXi F) {
-
     Eigen::SparseMatrix<double> A;
     igl::adjacency_matrix(F, A);
-
     return A;
 }
 
+//Ting Yi
+// Return a incidence matirx
 SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
     int cols = A.cols();
     assert(cols > 0);
@@ -172,28 +166,26 @@ SparseMatrix<double> mesh::Incidence_Matrix(SparseMatrix<double> A) {
 
     int count = 0;
     for (int row = 0; row <= rows; row++){
-
         for (int col = 0; col <= cols; col++) {
             if(A.coeff(row, col)){
                 if(col < row) {
-                    Vector_end.push_back(col);
-                    Vector_begin.push_back(row);
+                    Vector_end.push_back(col); //set the end vertex of edge
+                    Vector_begin.push_back(row); //set the begin vertex of edge
                     count++;
                 }
             }
         }
     }
-    //cout << "end for" <<endl;
 
     Eigen::SparseMatrix<double> incidence(cols, Vector_end.size());
 
-    for(int i=0;i<Vector_end.size();i++){
+    for(int i=0;i<Vector_end.size();i++){ //create the sparse matrix by start and end points of each edge
         incidence.insert(Vector_end[i],i) = 1;
         incidence.insert(Vector_begin[i],i) = -1;
     }
     return incidence.transpose();
 }
-
+//Antony
 SparseMatrix<double> compute_D(MatrixXd V) {
     int nVert = V.rows();
     SparseMatrix<double> D(nVert, nVert * 4);
@@ -205,7 +197,7 @@ SparseMatrix<double> compute_D(MatrixXd V) {
     }
     return D;
 }
-
+//Antony
 SparseMatrix<double> concat_rows(MatrixXd A, MatrixXd B) {
     MatrixXd M(A.rows() + B.rows(), A.cols());
     M << A, B;
@@ -254,7 +246,7 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
     SparseMatrix<double> A = Adjacency_Matrix(Temp_F);
 
-    SparseMatrix<double> M = Incidence_Matrix(A);
+    SparseMatrix<double> M = Incidence_Matrix(A); //get the incidence matrix
     A.resize(0, 0);
 
     SparseMatrix<double> MoG(G.rows() * M.rows(), G.cols() * M.cols());
@@ -265,11 +257,13 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
 
     MatrixXd new_V;
 
+    // go through each stiffness weight(alpha), from higher to lower
     for (int i = 0; i < nAlpha; i++) {
         double curr_alpha = alpha(i);
 
-        pre_X = 10 * X;
+        pre_X = 5 * X; // gives rise to a new set of preliminary correspondences
         int iter = 0;
+        // converges the distance of new and old vertexes
         while ((X - pre_X).norm() >= 0.0001) {
             double t_start;
             double time;
@@ -331,6 +325,5 @@ MatrixXd mesh::non_rigid_ICP(MatrixXd Temp_V, MatrixXi Temp_F, MatrixXd Target_V
         }
     }
     new_V = D * X;
-
     return new_V;
 }
